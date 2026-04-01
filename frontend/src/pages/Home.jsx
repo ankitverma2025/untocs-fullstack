@@ -314,10 +314,10 @@ const Home = () => {
         <div className="waitlist-container">
           <div className="waitlist-header">
             <h2>Be the first to know</h2>
-            <p>We're launching soon in India. Join the waitlist and we'll be in touch when untocs is ready.</p>
+            <p>We're launching soon. Join the waitlist and we'll be in touch when untocs is ready.</p>
             <div className="india-notice">
               <MapPin size={18} />
-              <span>Currently delivering across India</span>
+              <span>Launching soon in India</span>
             </div>
           </div>
 
@@ -364,45 +364,16 @@ const Home = () => {
             </div>
 
             <div className="form-group">
-              <Label htmlFor="location">Your location *</Label>
-              <Select value={formData.location} onValueChange={(value) => handleSelectChange('location', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select your state" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="andhra-pradesh">Andhra Pradesh</SelectItem>
-                  <SelectItem value="arunachal-pradesh">Arunachal Pradesh</SelectItem>
-                  <SelectItem value="assam">Assam</SelectItem>
-                  <SelectItem value="bihar">Bihar</SelectItem>
-                  <SelectItem value="chhattisgarh">Chhattisgarh</SelectItem>
-                  <SelectItem value="goa">Goa</SelectItem>
-                  <SelectItem value="gujarat">Gujarat</SelectItem>
-                  <SelectItem value="haryana">Haryana</SelectItem>
-                  <SelectItem value="himachal-pradesh">Himachal Pradesh</SelectItem>
-                  <SelectItem value="jharkhand">Jharkhand</SelectItem>
-                  <SelectItem value="karnataka">Karnataka</SelectItem>
-                  <SelectItem value="kerala">Kerala</SelectItem>
-                  <SelectItem value="madhya-pradesh">Madhya Pradesh</SelectItem>
-                  <SelectItem value="maharashtra">Maharashtra</SelectItem>
-                  <SelectItem value="manipur">Manipur</SelectItem>
-                  <SelectItem value="meghalaya">Meghalaya</SelectItem>
-                  <SelectItem value="mizoram">Mizoram</SelectItem>
-                  <SelectItem value="nagaland">Nagaland</SelectItem>
-                  <SelectItem value="odisha">Odisha</SelectItem>
-                  <SelectItem value="punjab">Punjab</SelectItem>
-                  <SelectItem value="rajasthan">Rajasthan</SelectItem>
-                  <SelectItem value="sikkim">Sikkim</SelectItem>
-                  <SelectItem value="tamil-nadu">Tamil Nadu</SelectItem>
-                  <SelectItem value="telangana">Telangana</SelectItem>
-                  <SelectItem value="tripura">Tripura</SelectItem>
-                  <SelectItem value="uttar-pradesh">Uttar Pradesh</SelectItem>
-                  <SelectItem value="uttarakhand">Uttarakhand</SelectItem>
-                  <SelectItem value="west-bengal">West Bengal</SelectItem>
-                  <SelectItem value="delhi">Delhi</SelectItem>
-                  <SelectItem value="puducherry">Puducherry</SelectItem>
-                  <SelectItem value="chandigarh">Chandigarh</SelectItem>
-                </SelectContent>
-              </Select>
+              <Label htmlFor="location">Your city *</Label>
+              <Input
+                id="location"
+                name="location"
+                type="text"
+                value={formData.location}
+                onChange={handleInputChange}
+                required
+                placeholder="Enter your city"
+              />
             </div>
 
             <div className="form-group">
