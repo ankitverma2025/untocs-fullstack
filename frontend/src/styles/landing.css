@@ -47,6 +47,12 @@
   flex-shrink: 0;
 }
 
+.logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
 .nav-cta {
   background-color: #2d2d2d;
   color: #ffffff;

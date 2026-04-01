@@ -272,8 +272,7 @@ const Home = () => {
       <nav className="nav-container">
         <div className="nav-content">
           <div className="logo">
-            <Leaf className="logo-icon" />
-            <span>untocs</span>
+            <img src="/untocs-transparent.png" alt="untocs" className="logo-image" />
           </div>
           <Button onClick={scrollToWaitlist} className="nav-cta">
             Join the Waitlist
@@ -599,8 +598,7 @@ const Home = () => {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-logo">
-            <Leaf className="logo-icon" />
-            <span>untocs</span>
+            <img src="/untocs-transparent.png" alt="untocs" className="logo-image" />
           </div>
           <p className="footer-text">No spam. Just updates when we launch.</p>
         </div>
