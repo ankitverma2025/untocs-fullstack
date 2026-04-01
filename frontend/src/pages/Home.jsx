@@ -201,8 +201,8 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validate required fields
-    if (!formData.firstName || !formData.email || !formData.babyAge || !formData.location || !formData.chemicalConcern) {
+    // Validate required fields (email is now optional)
+    if (!formData.firstName || !formData.babyAge || !formData.location || !formData.chemicalConcern) {
       toast.error('Please fill in all required fields');
       return;
     }
@@ -474,14 +474,13 @@ const Home = () => {
             </div>
 
             <div className="form-group">
-              <Label htmlFor="email">Email *</Label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                required
                 placeholder="your@email.com"
               />
             </div>
