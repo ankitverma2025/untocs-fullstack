@@ -4,19 +4,38 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwB8tuPJF331s
 
 export const submitWaitlistForm = async (formData) => {
   try {
+    // Map chemicalConcern to readable text
+    let chemicalConcernText = '';
+    if (formData.chemicalConcern === 'very-concerned') {
+      chemicalConcernText = 'Very concerned';
+    } else if (formData.chemicalConcern === 'somewhat-concerned') {
+      chemicalConcernText = 'Somewhat concerned';
+    } else if (formData.chemicalConcern === 'not-thought') {
+      chemicalConcernText = 'Not thought about it until now';
+    } else {
+      chemicalConcernText = formData.chemicalConcern || '';
+    }
+
+    // Map openToConversation to readable text
+    let openToConversationText = '';
+    if (formData.openToConversation === 'yes') {
+      openToConversationText = "Yes, I'm happy to talk";
+    } else if (formData.openToConversation === 'skip') {
+      openToConversationText = 'Skip for now';
+    } else {
+      openToConversationText = formData.openToConversation || '';
+    }
+
     // Map form data to match Google Sheets columns exactly
     const submissionData = {
-      firstName: formData.firstName,
-      email: formData.email,
+      firstName: formData.firstName || '',
+      email: formData.email || '',
       phone: formData.phone || '',
-      babyAge: formData.babyAge,
-      location: formData.location,
-      chemicalConcern: formData.chemicalConcern === 'very-concerned' ? 'Very concerned' : 
-                       formData.chemicalConcern === 'somewhat-concerned' ? 'Somewhat concerned' : 
-                       formData.chemicalConcern === 'not-thought' ? 'Not thought about it until now' : formData.chemicalConcern,
+      babyAge: formData.babyAge || '',
+      location: formData.location || '',
+      chemicalConcern: chemicalConcernText,
       firstImpression: formData.firstImpression || '',
-      openToConversation: formData.openToConversation === 'yes' ? 'Yes, I\'m happy to talk' : 
-                          formData.openToConversation === 'skip' ? 'Skip for now' : formData.openToConversation
+      openToConversation: openToConversationText
     };
 
     console.log('Sending to Google Sheets:', submissionData);
@@ -30,9 +49,7 @@ export const submitWaitlistForm = async (formData) => {
       body: JSON.stringify(submissionData)
     });
     
-    // Note: With no-cors mode, we can't read the response
-    // But the submission will work if the script is set up correctly
-    console.log('Waitlist submission sent to Google Sheets:', submissionData);
+    console.log('Waitlist submission sent successfully');
     
     return {
       success: true,

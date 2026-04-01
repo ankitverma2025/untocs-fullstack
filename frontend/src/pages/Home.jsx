@@ -228,6 +228,9 @@ const Home = () => {
         phone: formData.phone ? `${formData.countryCode}${formData.phone}` : ''
       };
       
+      console.log('FormData before submission:', formData);
+      console.log('SubmissionData:', submissionData);
+      
       const result = await submitWaitlistForm(submissionData);
       if (result.success) {
         // Show different success messages based on conversation preference
