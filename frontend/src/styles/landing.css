@@ -428,6 +428,27 @@
   margin: 2rem 0 1.5rem;
 }
 
+/* Phone Input Wrapper */
+.phone-input-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.country-code-select {
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.phone-number-input {
+  flex: 1;
+}
+
+.country-code-dropdown {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
 /* Field Hint */
 .field-hint {
   display: block;

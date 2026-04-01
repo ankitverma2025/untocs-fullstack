@@ -87,6 +87,7 @@ const Home = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     email: '',
+    countryCode: '+91',
     phone: '',
     babyAge: '',
     location: '',
@@ -97,41 +98,90 @@ const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState('');
 
+  const countryCodes = [
+    { code: '+91', country: '🇮🇳 India', digits: 10, startsWithDigits: ['6', '7', '8', '9'] },
+    { code: '+971', country: '🇦🇪 UAE', digits: 9 },
+    { code: '+966', country: '🇸🇦 Saudi Arabia', digits: 9 },
+    { code: '+974', country: '🇶🇦 Qatar', digits: 8 },
+    { code: '+965', country: '🇰🇼 Kuwait', digits: 8 },
+    { code: '+968', country: '🇴🇲 Oman', digits: 8 },
+    { code: '+65', country: '🇸🇬 Singapore', digits: 8 },
+    { code: '+60', country: '🇲🇾 Malaysia', digits: 9 },
+    { code: '+66', country: '🇹🇭 Thailand', digits: 9 },
+    { code: '+62', country: '🇮🇩 Indonesia', digits: 10 },
+    { code: '+1', country: '🇺🇸 United States', digits: 10 },
+    { code: '+1', country: '🇨🇦 Canada', digits: 10 },
+    { code: '+61', country: '🇦🇺 Australia', digits: 9 },
+    { code: '+64', country: '🇳🇿 New Zealand', digits: 9 },
+    { code: '+44', country: '🇬🇧 United Kingdom', digits: 10 },
+    { code: '+49', country: '🇩🇪 Germany', digits: 10 },
+    { code: '+33', country: '🇫🇷 France', digits: 9 },
+    { code: '+31', country: '🇳🇱 Netherlands', digits: 9 },
+    { code: '+34', country: '🇪🇸 Spain', digits: 9 },
+    { code: '+39', country: '🇮🇹 Italy', digits: 10 },
+    { code: '+41', country: '🇨🇭 Switzerland', digits: 9 },
+    { code: '+32', country: '🇧🇪 Belgium', digits: 9 },
+    { code: '+43', country: '🇦🇹 Austria', digits: 10 },
+    { code: '+46', country: '🇸🇪 Sweden', digits: 9 },
+    { code: '+47', country: '🇳🇴 Norway', digits: 8 },
+    { code: '+45', country: '🇩🇰 Denmark', digits: 8 },
+    { code: '+353', country: '🇮🇪 Ireland', digits: 9 },
+    { code: '+351', country: '🇵🇹 Portugal', digits: 9 },
+    { code: '+48', country: '🇵🇱 Poland', digits: 9 },
+    { code: '+30', country: '🇬🇷 Greece', digits: 10 },
+    { code: '+358', country: '🇫🇮 Finland', digits: 9 },
+    { code: '+81', country: '🇯🇵 Japan', digits: 10 },
+    { code: '+86', country: '🇨🇳 China', digits: 11 },
+    { code: '+886', country: '🇹🇼 Taiwan', digits: 9 },
+    { code: '+852', country: '🇭🇰 Hong Kong', digits: 8 }
+  ];
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
     // Validate phone number if it's being changed
     if (name === 'phone') {
-      validatePhoneNumber(value);
+      validatePhoneNumber(value, formData.countryCode);
     }
   };
 
-  const validatePhoneNumber = (phone) => {
+  const validatePhoneNumber = (phone, countryCode) => {
     if (!phone) {
       setPhoneError('');
       return true;
     }
     
-    // Remove spaces and dashes for validation
+    // Remove spaces and dashes
     const cleanPhone = phone.replace(/[\s-]/g, '');
     
-    // Accept formats:
-    // +91XXXXXXXXXX (Indian: +91 followed by 10 digits starting with 6-9)
-    // +1XXXXXXXXXX (US/Canada: +1 followed by 10 digits)
-    // +XXXXXXXXXXXX (Other countries: + followed by 7-15 digits)
-    const phoneRegex = /^\+\d{1,3}\d{7,15}$/;
-    const indianPhoneRegex = /^\+91[6-9]\d{9}$/;
+    // Find the country configuration
+    const countryConfig = countryCodes.find(c => c.code === countryCode);
     
-    if (!phoneRegex.test(cleanPhone)) {
-      setPhoneError('Please enter a valid phone number with country code (e.g., +91XXXXXXXXXX)');
+    if (!countryConfig) {
+      setPhoneError('Invalid country code selected');
       return false;
     }
     
-    // Special validation for Indian numbers
-    if (cleanPhone.startsWith('+91') && !indianPhoneRegex.test(cleanPhone)) {
-      setPhoneError('Indian mobile numbers must start with 6, 7, 8, or 9');
+    // Check if phone contains only digits
+    if (!/^\d+$/.test(cleanPhone)) {
+      setPhoneError('Phone number should contain only digits');
       return false;
+    }
+    
+    // Check digit length
+    if (cleanPhone.length !== countryConfig.digits) {
+      setPhoneError(`Phone number must be ${countryConfig.digits} digits for ${countryConfig.country}`);
+      return false;
+    }
+    
+    // Special validation for India - must start with 6, 7, 8, or 9
+    if (countryCode === '+91' && countryConfig.startsWithDigits) {
+      const firstDigit = cleanPhone[0];
+      if (!countryConfig.startsWithDigits.includes(firstDigit)) {
+        setPhoneError('Indian mobile numbers must start with 6, 7, 8, or 9');
+        return false;
+      }
     }
     
     setPhoneError('');
@@ -140,6 +190,11 @@ const Home = () => {
 
   const handleSelectChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    
+    // Re-validate phone if country code changes
+    if (field === 'countryCode' && formData.phone) {
+      validatePhoneNumber(formData.phone, value);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -158,7 +213,7 @@ const Home = () => {
     }
 
     // Validate phone number if provided
-    if (formData.phone && !validatePhoneNumber(formData.phone)) {
+    if (formData.phone && !validatePhoneNumber(formData.phone, formData.countryCode)) {
       toast.error('Please enter a valid phone number');
       return;
     }
@@ -166,7 +221,13 @@ const Home = () => {
     setIsSubmitting(true);
     
     try {
-      const result = await submitWaitlistForm(formData);
+      // Combine country code and phone number for submission
+      const submissionData = {
+        ...formData,
+        phone: formData.phone ? `${formData.countryCode}${formData.phone}` : ''
+      };
+      
+      const result = await submitWaitlistForm(submissionData);
       if (result.success) {
         // Show different success messages based on conversation preference
         if (formData.openToConversation === 'yes') {
@@ -422,17 +483,30 @@ const Home = () => {
             </div>
 
             <div className="form-group">
-              <Label htmlFor="phone">Phone number (with country code)</Label>
-              <Input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleInputChange}
-                placeholder="+91XXXXXXXXXX"
-                maxLength={17}
-              />
-              <span className="field-hint">Include country code (e.g., +91 for India, +1 for US)</span>
+              <Label htmlFor="phone">Phone number</Label>
+              <div className="phone-input-wrapper">
+                <Select value={formData.countryCode} onValueChange={(value) => handleSelectChange('countryCode', value)}>
+                  <SelectTrigger className="country-code-select">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="country-code-dropdown">
+                    {countryCodes.map((country, index) => (
+                      <SelectItem key={`${country.code}-${index}`} value={country.code}>
+                        {country.country} {country.code}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="Enter phone number"
+                  className="phone-number-input"
+                />
+              </div>
               {phoneError && <span className="error-message">{phoneError}</span>}
             </div>
 
