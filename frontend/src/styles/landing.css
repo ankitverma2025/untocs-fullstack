@@ -430,23 +430,40 @@
 
 /* Phone Input Wrapper */
 .phone-input-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 140px 1fr;
   gap: 0.75rem;
   align-items: flex-start;
 }
 
 .country-code-select {
-  width: 180px;
-  flex-shrink: 0;
+  width: 100%;
 }
 
 .phone-number-input {
-  flex: 1;
+  width: 100%;
 }
 
 .country-code-dropdown {
   max-height: 300px;
   overflow-y: auto;
+}
+
+/* Responsive adjustments for phone input */
+@media (max-width: 640px) {
+  .phone-input-wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .country-code-select {
+    width: 100%;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .phone-input-wrapper {
+    grid-template-columns: 150px 1fr;
+  }
 }
 
 /* Field Hint */
