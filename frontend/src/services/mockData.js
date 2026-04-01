@@ -4,14 +4,22 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwB8tuPJF331s
 
 export const submitWaitlistForm = async (formData) => {
   try {
-    // Map form data to readable format for Google Sheets
+    // Map form data to match Google Sheets columns exactly
     const submissionData = {
-      ...formData,
+      firstName: formData.firstName,
+      email: formData.email,
+      phone: formData.phone || '',
+      babyAge: formData.babyAge,
+      location: formData.location,
       chemicalConcern: formData.chemicalConcern === 'very-concerned' ? 'Very concerned' : 
                        formData.chemicalConcern === 'somewhat-concerned' ? 'Somewhat concerned' : 
-                       'Not thought about it until now',
-      openToConversation: formData.openToConversation === 'yes' ? 'Yes, I\'m happy to talk' : 'Skip for now'
+                       formData.chemicalConcern === 'not-thought' ? 'Not thought about it until now' : formData.chemicalConcern,
+      firstImpression: formData.firstImpression || '',
+      openToConversation: formData.openToConversation === 'yes' ? 'Yes, I\'m happy to talk' : 
+                          formData.openToConversation === 'skip' ? 'Skip for now' : formData.openToConversation
     };
+
+    console.log('Sending to Google Sheets:', submissionData);
 
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
