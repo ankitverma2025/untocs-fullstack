@@ -87,10 +87,15 @@ const Home = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     email: '',
+    phone: '',
     babyAge: '',
-    comments: ''
+    location: '',
+    chemicalConcern: '',
+    firstImpression: '',
+    openToConversation: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [phoneError, setPhoneError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
