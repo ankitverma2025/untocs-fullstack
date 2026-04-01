@@ -1,31 +1,35 @@
-// Mock service for waitlist form submission
-// This simulates backend API calls for the frontend-only version
+// Waitlist form submission service - sends data to Google Sheets
+
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwB8tuPJF331sHmN-eOVbkHOBpz2HlsUewEnZ0aWnHDR8pEZ3QRDWthiWPkqRBM5B6CLQ/exec';
 
 export const submitWaitlistForm = async (formData) => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  
-  // Store in localStorage for demo purposes
-  const existingSubmissions = JSON.parse(localStorage.getItem('waitlistSubmissions') || '[]');
-  
-  const submission = {
-    id: Date.now(),
-    ...formData,
-    timestamp: new Date().toISOString()
-  };
-  
-  existingSubmissions.push(submission);
-  localStorage.setItem('waitlistSubmissions', JSON.stringify(existingSubmissions));
-  
-  console.log('Waitlist submission (mock):', submission);
-  
-  return {
-    success: true,
-    message: "You're on the list!",
-    data: submission
-  };
+  try {
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors', // Required for Google Apps Script
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+    
+    // Note: With no-cors mode, we can't read the response
+    // But the submission will work if the script is set up correctly
+    console.log('Waitlist submission sent to Google Sheets:', formData);
+    
+    return {
+      success: true,
+      message: "You're on the list!",
+      data: formData
+    };
+    
+  } catch (error) {
+    console.error('Error submitting to Google Sheets:', error);
+    throw new Error('Failed to submit. Please try again.');
+  }
 };
 
 export const getWaitlistSubmissions = () => {
-  return JSON.parse(localStorage.getItem('waitlistSubmissions') || '[]');
+  // This is no longer needed as data is in Google Sheets
+  return [];
 };
