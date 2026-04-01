@@ -113,9 +113,24 @@ const Home = () => {
       return true;
     }
     
-    const phoneRegex = /^[6-9]\d{9}$/;
-    if (!phoneRegex.test(phone)) {
-      setPhoneError('Please enter a valid 10-digit Indian mobile number.');
+    // Remove spaces and dashes for validation
+    const cleanPhone = phone.replace(/[\s-]/g, '');
+    
+    // Accept formats:
+    // +91XXXXXXXXXX (Indian: +91 followed by 10 digits starting with 6-9)
+    // +1XXXXXXXXXX (US/Canada: +1 followed by 10 digits)
+    // +XXXXXXXXXXXX (Other countries: + followed by 7-15 digits)
+    const phoneRegex = /^\+\d{1,3}\d{7,15}$/;
+    const indianPhoneRegex = /^\+91[6-9]\d{9}$/;
+    
+    if (!phoneRegex.test(cleanPhone)) {
+      setPhoneError('Please enter a valid phone number with country code (e.g., +91XXXXXXXXXX)');
+      return false;
+    }
+    
+    // Special validation for Indian numbers
+    if (cleanPhone.startsWith('+91') && !indianPhoneRegex.test(cleanPhone)) {
+      setPhoneError('Indian mobile numbers must start with 6, 7, 8, or 9');
       return false;
     }
     
@@ -407,16 +422,17 @@ const Home = () => {
             </div>
 
             <div className="form-group">
-              <Label htmlFor="phone">Phone number</Label>
+              <Label htmlFor="phone">Phone number (with country code)</Label>
               <Input
                 id="phone"
                 name="phone"
                 type="tel"
                 value={formData.phone}
                 onChange={handleInputChange}
-                placeholder="10-digit mobile number"
-                maxLength={10}
+                placeholder="+91XXXXXXXXXX"
+                maxLength={17}
               />
+              <span className="field-hint">Include country code (e.g., +91 for India, +1 for US)</span>
               {phoneError && <span className="error-message">{phoneError}</span>}
             </div>
 
