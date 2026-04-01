@@ -16,9 +16,72 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../components/ui/accordion';
-import { Leaf, Shield, Droplet, Heart } from 'lucide-react';
+import { Leaf, Shield, Droplet, Heart, MapPin } from 'lucide-react';
 import { toast } from 'sonner';
 import { submitWaitlistForm } from '../services/mockData';
+
+const products = [
+  {
+    id: 1,
+    name: 'Onesies',
+    description: 'Soft, breathable onesies in natural colors',
+    image: 'https://images.pexels.com/photos/5982301/pexels-photo-5982301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 2,
+    name: 'Rompers',
+    description: 'Comfortable rompers for all-day play',
+    image: 'https://images.pexels.com/photos/36709406/pexels-photo-36709406.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 3,
+    name: 'Jhablas',
+    description: 'Traditional jhablas with modern comfort',
+    image: 'https://images.pexels.com/photos/15961868/pexels-photo-15961868.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 4,
+    name: 'Swaddles',
+    description: 'Gentle swaddles for peaceful sleep',
+    image: 'https://images.unsplash.com/photo-1655728664483-1e3b0778e1a5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwxfHxjb3R0b24lMjBiYWJ5JTIwZmFicmljfGVufDB8fHx8MTc3NTAzNTYxMHww&ixlib=rb-4.1.0&q=85'
+  },
+  {
+    id: 5,
+    name: 'Sleepwear',
+    description: 'Cozy sleepwear for restful nights',
+    image: 'https://images.pexels.com/photos/6849333/pexels-photo-6849333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 6,
+    name: 'Pants',
+    description: 'Stretchy, comfortable pants for active babies',
+    image: 'https://images.pexels.com/photos/30435354/pexels-photo-30435354.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 7,
+    name: 'Tank Tops',
+    description: 'Lightweight tank tops for warm days',
+    image: 'https://images.unsplash.com/photo-1580835619786-7f0747475dc7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwyfHxiYWJ5JTIwb25lc2llfGVufDB8fHx3aGl0ZXwxNzc1MDM4OTM5fDA&ixlib=rb-4.1.0&q=85'
+  },
+  {
+    id: 8,
+    name: 'Mittens',
+    description: 'Soft mittens to protect delicate hands',
+    image: 'https://images.pexels.com/photos/29234754/pexels-photo-29234754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 9,
+    name: 'Caps',
+    description: 'Gentle caps for warmth and comfort',
+    image: 'https://images.pexels.com/photos/16053828/pexels-photo-16053828.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 10,
+    name: 'Socks',
+    description: 'Non-slip socks for tiny feet',
+    image: 'https://images.unsplash.com/photo-1591909242139-83cc3b9217c1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwzfHxiYWJ5JTIwc2xlZXB3ZWFyfGVufDB8fHx3aGl0ZXwxNzc1MDM4OTU3fDA&ixlib=rb-4.1.0&q=85'
+  }
+];
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -34,14 +97,14 @@ const Home = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSelectChange = (value) => {
-    setFormData(prev => ({ ...prev, babyAge: value }));
+  const handleSelectChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.firstName || !formData.email || !formData.babyAge) {
+    if (!formData.firstName || !formData.email || !formData.babyAge || !formData.location) {
       toast.error('Please fill in all required fields');
       return;
     }
@@ -54,7 +117,7 @@ const Home = () => {
         toast.success("You're on the list. We'll be in touch when untocs launches. — the untocs team", {
           duration: 5000,
         });
-        setFormData({ firstName: '', email: '', babyAge: '', comments: '' });
+        setFormData({ firstName: '', email: '', babyAge: '', location: '', comments: '' });
       }
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
@@ -224,12 +287,38 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Products Section */}
+      <section className="products-section">
+        <div className="products-header">
+          <h2>Our Collection</h2>
+          <p>Pure, chemical-free clothing for every moment of your baby's day</p>
+        </div>
+
+        <div className="products-grid">
+          {products.map((product) => (
+            <div key={product.id} className="product-card">
+              <div className="product-image-wrapper">
+                <img src={product.image} alt={product.name} className="product-image" />
+              </div>
+              <div className="product-info">
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Waitlist Form Section */}
       <section id="waitlist" className="waitlist-section">
         <div className="waitlist-container">
           <div className="waitlist-header">
             <h2>Be the first to know</h2>
             <p>We're launching soon in India. Join the waitlist and we'll be in touch when untocs is ready.</p>
+            <div className="india-notice">
+              <MapPin size={18} />
+              <span>Currently delivering across India</span>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="waitlist-form">
@@ -261,7 +350,7 @@ const Home = () => {
 
             <div className="form-group">
               <Label htmlFor="babyAge">Baby's age *</Label>
-              <Select value={formData.babyAge} onValueChange={handleSelectChange}>
+              <Select value={formData.babyAge} onValueChange={(value) => handleSelectChange('babyAge', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select age range" />
                 </SelectTrigger>
@@ -270,6 +359,48 @@ const Home = () => {
                   <SelectItem value="6-12">6–12 months</SelectItem>
                   <SelectItem value="1-2">1–2 years</SelectItem>
                   <SelectItem value="expecting">Expecting</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="form-group">
+              <Label htmlFor="location">Your location *</Label>
+              <Select value={formData.location} onValueChange={(value) => handleSelectChange('location', value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select your state" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="andhra-pradesh">Andhra Pradesh</SelectItem>
+                  <SelectItem value="arunachal-pradesh">Arunachal Pradesh</SelectItem>
+                  <SelectItem value="assam">Assam</SelectItem>
+                  <SelectItem value="bihar">Bihar</SelectItem>
+                  <SelectItem value="chhattisgarh">Chhattisgarh</SelectItem>
+                  <SelectItem value="goa">Goa</SelectItem>
+                  <SelectItem value="gujarat">Gujarat</SelectItem>
+                  <SelectItem value="haryana">Haryana</SelectItem>
+                  <SelectItem value="himachal-pradesh">Himachal Pradesh</SelectItem>
+                  <SelectItem value="jharkhand">Jharkhand</SelectItem>
+                  <SelectItem value="karnataka">Karnataka</SelectItem>
+                  <SelectItem value="kerala">Kerala</SelectItem>
+                  <SelectItem value="madhya-pradesh">Madhya Pradesh</SelectItem>
+                  <SelectItem value="maharashtra">Maharashtra</SelectItem>
+                  <SelectItem value="manipur">Manipur</SelectItem>
+                  <SelectItem value="meghalaya">Meghalaya</SelectItem>
+                  <SelectItem value="mizoram">Mizoram</SelectItem>
+                  <SelectItem value="nagaland">Nagaland</SelectItem>
+                  <SelectItem value="odisha">Odisha</SelectItem>
+                  <SelectItem value="punjab">Punjab</SelectItem>
+                  <SelectItem value="rajasthan">Rajasthan</SelectItem>
+                  <SelectItem value="sikkim">Sikkim</SelectItem>
+                  <SelectItem value="tamil-nadu">Tamil Nadu</SelectItem>
+                  <SelectItem value="telangana">Telangana</SelectItem>
+                  <SelectItem value="tripura">Tripura</SelectItem>
+                  <SelectItem value="uttar-pradesh">Uttar Pradesh</SelectItem>
+                  <SelectItem value="uttarakhand">Uttarakhand</SelectItem>
+                  <SelectItem value="west-bengal">West Bengal</SelectItem>
+                  <SelectItem value="delhi">Delhi</SelectItem>
+                  <SelectItem value="puducherry">Puducherry</SelectItem>
+                  <SelectItem value="chandigarh">Chandigarh</SelectItem>
                 </SelectContent>
               </Select>
             </div>
