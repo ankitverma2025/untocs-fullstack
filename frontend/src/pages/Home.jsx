@@ -95,6 +95,27 @@ const Home = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Validate phone number if it's being changed
+    if (name === 'phone') {
+      validatePhoneNumber(value);
+    }
+  };
+
+  const validatePhoneNumber = (phone) => {
+    if (!phone) {
+      setPhoneError('');
+      return true;
+    }
+    
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+      setPhoneError('Please enter a valid 10-digit Indian mobile number.');
+      return false;
+    }
+    
+    setPhoneError('');
+    return true;
   };
 
   const handleSelectChange = (field, value) => {
@@ -104,8 +125,21 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.firstName || !formData.email || !formData.babyAge || !formData.location) {
+    // Validate required fields
+    if (!formData.firstName || !formData.email || !formData.babyAge || !formData.location || !formData.chemicalConcern) {
       toast.error('Please fill in all required fields');
+      return;
+    }
+
+    // Check if user wants to talk and phone is required
+    if (formData.openToConversation === 'yes' && !formData.phone) {
+      toast.error('Please enter your phone number so we can reach out to you');
+      return;
+    }
+
+    // Validate phone number if provided
+    if (formData.phone && !validatePhoneNumber(formData.phone)) {
+      toast.error('Please enter a valid phone number');
       return;
     }
 
@@ -114,10 +148,27 @@ const Home = () => {
     try {
       const result = await submitWaitlistForm(formData);
       if (result.success) {
-        toast.success("You're on the list. We'll be in touch when untocs launches. — the untocs team", {
-          duration: 5000,
+        // Show different success messages based on conversation preference
+        if (formData.openToConversation === 'yes') {
+          toast.success("You're on the list and you're now part of our founding circle. We'll reach out personally within a few days to set up a quick conversation. As a thank you, you'll get exclusive first-access pricing when untocs launches.", {
+            duration: 8000,
+          });
+        } else {
+          toast.success("You're on the list. We'll be in touch when untocs launches.", {
+            duration: 5000,
+          });
+        }
+        setFormData({ 
+          firstName: '', 
+          email: '', 
+          phone: '',
+          babyAge: '', 
+          location: '', 
+          chemicalConcern: '',
+          firstImpression: '',
+          openToConversation: ''
         });
-        setFormData({ firstName: '', email: '', babyAge: '', location: '', comments: '' });
+        setPhoneError('');
       }
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
@@ -150,13 +201,15 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-headline">
-              Conventional baby clothing is soaked in toxic chemicals. Your baby wears it 16 hours a day.
+              Cloths are treated and dyed with toxic chemicals. Your baby wears it 16 hours a day.
             </h1>
-            <p className="hero-subline">
-              Synthetic dyes, formaldehyde finishes, chemical softeners — none of it disclosed on any label. 
-              Over 8,000 synthetic chemicals are used in conventional textile manufacturing. Not one is required 
-              to appear on the tag.
+           <p className="hero-subline">
+            Over 8,000 synthetic chemicals are used in textile manufacturing including synthetic dyes, formaldehyde finishes, and chemical softeners.
             </p>
+            <p className="hero-subline">
+              Many cause immediate reactions like eczema, allergies, and textile dermatitis. Others are known carcinogens and endocrine disruptors, linked to long-term reproductive and developmental harm. Your baby's skin absorbs more of this than you'd expect.
+              </p>
+          
             <Button onClick={scrollToWaitlist} size="lg" className="hero-cta">
               Join the Waitlist
             </Button>
@@ -349,16 +402,31 @@ const Home = () => {
             </div>
 
             <div className="form-group">
+              <Label htmlFor="phone">Phone number</Label>
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="10-digit mobile number"
+                maxLength={10}
+              />
+              {phoneError && <span className="error-message">{phoneError}</span>}
+            </div>
+
+            <div className="form-group">
               <Label htmlFor="babyAge">Baby's age *</Label>
               <Select value={formData.babyAge} onValueChange={(value) => handleSelectChange('babyAge', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select age range" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="expecting">Expecting</SelectItem>
                   <SelectItem value="0-6">0–6 months</SelectItem>
                   <SelectItem value="6-12">6–12 months</SelectItem>
                   <SelectItem value="1-2">1–2 years</SelectItem>
-                  <SelectItem value="expecting">Expecting</SelectItem>
+                  <SelectItem value="2+">2+ years</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -376,16 +444,50 @@ const Home = () => {
               />
             </div>
 
+            <div className="form-divider"></div>
+
             <div className="form-group">
-              <Label htmlFor="comments">What made you look this up today? (Optional)</Label>
+              <Label htmlFor="chemicalConcern">How concerned are you about chemicals in your baby's clothing? *</Label>
+              <Select value={formData.chemicalConcern} onValueChange={(value) => handleSelectChange('chemicalConcern', value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select your concern level" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="very-concerned">Very concerned</SelectItem>
+                  <SelectItem value="somewhat-concerned">Somewhat concerned</SelectItem>
+                  <SelectItem value="not-thought">Not thought about it until now</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="form-group">
+              <Label htmlFor="firstImpression">What's your first impression of untocs?</Label>
               <Textarea
-                id="comments"
-                name="comments"
-                value={formData.comments}
+                id="firstImpression"
+                name="firstImpression"
+                value={formData.firstImpression}
                 onChange={handleInputChange}
                 placeholder="Share your thoughts..."
-                rows={4}
+                rows={3}
               />
+            </div>
+
+            <div className="form-group">
+              <Label htmlFor="openToConversation" className="conversation-label">
+                We'd love to learn more about your experience as a parent. Early supporters get exclusive first-access pricing at launch. Would you be open to a 15-minute conversation with us?
+              </Label>
+              <Select value={formData.openToConversation} onValueChange={(value) => handleSelectChange('openToConversation', value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select your preference" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="yes">Yes, I'm happy to talk</SelectItem>
+                  <SelectItem value="skip">Skip for now</SelectItem>
+                </SelectContent>
+              </Select>
+              {formData.openToConversation === 'yes' && !formData.phone && (
+                <p className="phone-reminder">Please add your phone number above so we can reach out to you.</p>
+              )}
             </div>
 
             <Button type="submit" size="lg" className="submit-button" disabled={isSubmitting}>

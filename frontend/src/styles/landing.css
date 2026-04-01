@@ -421,6 +421,42 @@
   flex-shrink: 0;
 }
 
+/* Form Divider */
+.form-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #e0e0e0 50%, transparent 100%);
+  margin: 2rem 0 1.5rem;
+}
+
+/* Error Message */
+.error-message {
+  display: block;
+  color: #dc2626;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Conversation Label */
+.conversation-label {
+  line-height: 1.6 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Phone Reminder */
+.phone-reminder {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fef3c7;
+  border-left: 3px solid #f59e0b;
+  border-radius: 6px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #92400e;
+}
+
 /* Waitlist Section */
 .waitlist-section {
   background: linear-gradient(135deg, #f8f8f8 0%, #ececec 100%);
