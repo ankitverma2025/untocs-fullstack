@@ -20,6 +20,45 @@ import { Leaf, Shield, Droplet, Heart, MapPin } from 'lucide-react';
 import { toast } from 'sonner';
 import { submitWaitlistForm } from '../services/mockData';
 
+// Country codes configuration
+const COUNTRY_CODES = [
+  { code: '+91', country: '🇮🇳 India', digits: 10, startsWithDigits: ['6', '7', '8', '9'] },
+  { code: '+971', country: '🇦🇪 UAE', digits: 9 },
+  { code: '+966', country: '🇸🇦 Saudi Arabia', digits: 9 },
+  { code: '+974', country: '🇶🇦 Qatar', digits: 8 },
+  { code: '+965', country: '🇰🇼 Kuwait', digits: 8 },
+  { code: '+968', country: '🇴🇲 Oman', digits: 8 },
+  { code: '+65', country: '🇸🇬 Singapore', digits: 8 },
+  { code: '+60', country: '🇲🇾 Malaysia', digits: 9 },
+  { code: '+66', country: '🇹🇭 Thailand', digits: 9 },
+  { code: '+62', country: '🇮🇩 Indonesia', digits: 10 },
+  { code: '+1', country: '🇺🇸 United States', digits: 10 },
+  { code: '+1', country: '🇨🇦 Canada', digits: 10, label: 'CA' },
+  { code: '+61', country: '🇦🇺 Australia', digits: 9 },
+  { code: '+64', country: '🇳🇿 New Zealand', digits: 9 },
+  { code: '+44', country: '🇬🇧 United Kingdom', digits: 10 },
+  { code: '+49', country: '🇩🇪 Germany', digits: 10 },
+  { code: '+33', country: '🇫🇷 France', digits: 9 },
+  { code: '+31', country: '🇳🇱 Netherlands', digits: 9 },
+  { code: '+34', country: '🇪🇸 Spain', digits: 9 },
+  { code: '+39', country: '🇮🇹 Italy', digits: 10 },
+  { code: '+41', country: '🇨🇭 Switzerland', digits: 9 },
+  { code: '+32', country: '🇧🇪 Belgium', digits: 9 },
+  { code: '+43', country: '🇦🇹 Austria', digits: 10 },
+  { code: '+46', country: '🇸🇪 Sweden', digits: 9 },
+  { code: '+47', country: '🇳🇴 Norway', digits: 8 },
+  { code: '+45', country: '🇩🇰 Denmark', digits: 8 },
+  { code: '+353', country: '🇮🇪 Ireland', digits: 9 },
+  { code: '+351', country: '🇵🇹 Portugal', digits: 9 },
+  { code: '+48', country: '🇵🇱 Poland', digits: 9 },
+  { code: '+30', country: '🇬🇷 Greece', digits: 10 },
+  { code: '+358', country: '🇫🇮 Finland', digits: 9 },
+  { code: '+81', country: '🇯🇵 Japan', digits: 10 },
+  { code: '+86', country: '🇨🇳 China', digits: 11 },
+  { code: '+886', country: '🇹🇼 Taiwan', digits: 9 },
+  { code: '+852', country: '🇭🇰 Hong Kong', digits: 8 }
+];
+
 const products = [
   {
     id: 1,
@@ -98,44 +137,6 @@ const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState('');
 
-  const countryCodes = [
-    { code: '+91', country: '🇮🇳 India', digits: 10, startsWithDigits: ['6', '7', '8', '9'] },
-    { code: '+971', country: '🇦🇪 UAE', digits: 9 },
-    { code: '+966', country: '🇸🇦 Saudi Arabia', digits: 9 },
-    { code: '+974', country: '🇶🇦 Qatar', digits: 8 },
-    { code: '+965', country: '🇰🇼 Kuwait', digits: 8 },
-    { code: '+968', country: '🇴🇲 Oman', digits: 8 },
-    { code: '+65', country: '🇸🇬 Singapore', digits: 8 },
-    { code: '+60', country: '🇲🇾 Malaysia', digits: 9 },
-    { code: '+66', country: '🇹🇭 Thailand', digits: 9 },
-    { code: '+62', country: '🇮🇩 Indonesia', digits: 10 },
-    { code: '+1', country: '🇺🇸 United States', digits: 10 },
-    { code: '+1', country: '🇨🇦 Canada', digits: 10 },
-    { code: '+61', country: '🇦🇺 Australia', digits: 9 },
-    { code: '+64', country: '🇳🇿 New Zealand', digits: 9 },
-    { code: '+44', country: '🇬🇧 United Kingdom', digits: 10 },
-    { code: '+49', country: '🇩🇪 Germany', digits: 10 },
-    { code: '+33', country: '🇫🇷 France', digits: 9 },
-    { code: '+31', country: '🇳🇱 Netherlands', digits: 9 },
-    { code: '+34', country: '🇪🇸 Spain', digits: 9 },
-    { code: '+39', country: '🇮🇹 Italy', digits: 10 },
-    { code: '+41', country: '🇨🇭 Switzerland', digits: 9 },
-    { code: '+32', country: '🇧🇪 Belgium', digits: 9 },
-    { code: '+43', country: '🇦🇹 Austria', digits: 10 },
-    { code: '+46', country: '🇸🇪 Sweden', digits: 9 },
-    { code: '+47', country: '🇳🇴 Norway', digits: 8 },
-    { code: '+45', country: '🇩🇰 Denmark', digits: 8 },
-    { code: '+353', country: '🇮🇪 Ireland', digits: 9 },
-    { code: '+351', country: '🇵🇹 Portugal', digits: 9 },
-    { code: '+48', country: '🇵🇱 Poland', digits: 9 },
-    { code: '+30', country: '🇬🇷 Greece', digits: 10 },
-    { code: '+358', country: '🇫🇮 Finland', digits: 9 },
-    { code: '+81', country: '🇯🇵 Japan', digits: 10 },
-    { code: '+86', country: '🇨🇳 China', digits: 11 },
-    { code: '+886', country: '🇹🇼 Taiwan', digits: 9 },
-    { code: '+852', country: '🇭🇰 Hong Kong', digits: 8 }
-  ];
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -156,7 +157,7 @@ const Home = () => {
     const cleanPhone = phone.replace(/[\s-]/g, '');
     
     // Find the country configuration
-    const countryConfig = countryCodes.find(c => c.code === countryCode);
+    const countryConfig = COUNTRY_CODES.find(c => c.code === countryCode);
     
     if (!countryConfig) {
       setPhoneError('Invalid country code selected');
@@ -490,7 +491,7 @@ const Home = () => {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="country-code-dropdown">
-                    {countryCodes.map((country, index) => (
+                    {COUNTRY_CODES.map((country, index) => (
                       <SelectItem key={`${country.code}-${index}`} value={country.code}>
                         {country.country} {country.code}
                       </SelectItem>
