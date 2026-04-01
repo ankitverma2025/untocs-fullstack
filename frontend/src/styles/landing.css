@@ -1,5 +1,5 @@
-/* Import modern serif font */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+/* Import Nunito font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
 
 .landing-page {
   width: 100%;
@@ -48,11 +48,11 @@
 .nav-cta {
   background-color: #2d2d2d;
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0.625rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: all 0.2s ease;
 }
 
@@ -81,32 +81,32 @@
 }
 
 .hero-headline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 3.25rem;
-  font-weight: 600;
-  line-height: 1.2;
+  font-weight: 800;
+  line-height: 1.25;
   color: #1a1a1a;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
 .hero-subline {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.1rem;
   line-height: 1.7;
   color: #4a4a4a;
   margin-bottom: 2.5rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .hero-cta {
   background-color: #2d2d2d;
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   padding: 1rem 2.5rem;
-  border-radius: 6px;
+  border-radius: 10px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -188,20 +188,20 @@
 }
 
 .solution-header h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
 .solution-subline {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.15rem;
   line-height: 1.7;
   color: #4a4a4a;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .solution-cards {
@@ -213,7 +213,7 @@
 
 .solution-card {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 2.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
@@ -229,7 +229,7 @@
   width: 56px;
   height: 56px;
   background: #f5f5f5;
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -238,20 +238,21 @@
 }
 
 .solution-card h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 1rem;
   letter-spacing: -0.01em;
 }
 
 .solution-card p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1rem;
   line-height: 1.7;
   color: #4a4a4a;
   margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 .botanical-list {
@@ -262,12 +263,13 @@
 }
 
 .botanical-item {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   color: #4a4a4a;
   padding-left: 1.25rem;
   position: relative;
+  font-weight: 500;
 }
 
 .botanical-item::before {
@@ -280,12 +282,12 @@
 
 .botanical-item strong {
   color: #2d2d2d;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .card-image {
   margin-top: 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
@@ -320,24 +322,25 @@
 }
 
 .waitlist-header h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 2.75rem;
-  font-weight: 600;
+  font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
 .waitlist-header p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.05rem;
   line-height: 1.6;
   color: #4a4a4a;
+  font-weight: 500;
 }
 
 .waitlist-form {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 3rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -359,13 +362,14 @@
 
 .form-group input,
 .form-group textarea {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1rem;
   border: 1.5px solid #e0e0e0;
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 0.875rem 1rem;
   transition: all 0.2s ease;
   background: #fafafa;
+  font-weight: 500;
 }
 
 .form-group input:focus,
@@ -385,11 +389,11 @@
   width: 100%;
   background-color: #2d2d2d;
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 1.125rem 2rem;
-  border-radius: 6px;
+  border-radius: 12px;
   margin-top: 1rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
@@ -426,18 +430,19 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 800;
   color: #2d2d2d;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .footer-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 0.9rem;
   color: #6a6a6a;
   text-align: center;
+  font-weight: 500;
 }
 
 /* Animations */
@@ -501,6 +506,10 @@
   .solution-header h2 {
     font-size: 2.25rem;
   }
+  
+  .hero-image {
+    border-radius: 16px;
+  }
 
   .solution-section {
     padding: 4rem 1.5rem;
@@ -540,5 +549,6 @@
   .nav-cta {
     font-size: 0.85rem;
     padding: 0.5rem 1.25rem;
+    border-radius: 8px;
   }
 }
