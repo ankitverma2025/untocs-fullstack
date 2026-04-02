@@ -119,6 +119,36 @@ const products = [
     name: 'Socks',
     description: 'Non-slip socks for tiny feet',
     image: 'https://images.unsplash.com/photo-1591909242139-83cc3b9217c1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwzfHxiYWJ5JTIwc2xlZXB3ZWFyfGVufDB8fHx3aGl0ZXwxNzc1MDM4OTU3fDA&ixlib=rb-4.1.0&q=85'
+  },
+  {
+    id: 11,
+    name: 'Toys',
+    description: 'Chemical-free soft toys safe for curious hands and mouths',
+    image: 'https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 12,
+    name: 'Bed Sheets',
+    description: 'Toxin-free sheets for safe, restful sleep',
+    image: 'https://images.pexels.com/photos/6685231/pexels-photo-6685231.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 13,
+    name: 'Curtains',
+    description: 'Natural fabric curtains free from chemical flame retardants',
+    image: 'https://images.pexels.com/photos/1248583/pexels-photo-1248583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 14,
+    name: 'Pillow Covers',
+    description: 'Soft, breathable pillow covers for delicate skin',
+    image: 'https://images.pexels.com/photos/6316065/pexels-photo-6316065.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  },
+  {
+    id: 15,
+    name: 'Diapers & Wipes',
+    description: 'Plant-based diapers and wipes with zero harmful chemicals',
+    image: 'https://images.pexels.com/photos/3662667/pexels-photo-3662667.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   }
 ];
 
