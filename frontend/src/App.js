@@ -1,5 +1,5 @@
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Untocs from "./pages/Untocs";
 import Cardamoon from "./pages/Cardamoon";
 import { Toaster } from "./components/ui/sonner";
@@ -11,6 +11,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Navigate to="/untocs" replace />} />
           <Route path="/untocs" element={<Untocs />} />
           <Route path="/cardamoon" element={<Cardamoon />} />
         </Routes>
