@@ -2,7 +2,7 @@
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwB8tuPJF331sHmN-eOVbkHOBpz2HlsUewEnZ0aWnHDR8pEZ3QRDWthiWPkqRBM5B6CLQ/exec';
 
-export const submitWaitlistForm = async (formData) => {
+export const submitWaitlistForm = async (formData, { source = 'untocs' } = {}) => {
   try {
     // Map chemicalConcern to readable text
     let chemicalConcernText = '';
@@ -35,12 +35,13 @@ export const submitWaitlistForm = async (formData) => {
       location: formData.location || '',
       chemicalConcern: chemicalConcernText,
       firstImpression: formData.firstImpression || '',
-      openToConversation: openToConversationText
+      openToConversation: openToConversationText,
+      source
     };
 
     console.log('Sending to Google Sheets:', submissionData);
 
-    const response = await fetch(GOOGLE_SCRIPT_URL, {
+    await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors', // Required for Google Apps Script
       headers: {

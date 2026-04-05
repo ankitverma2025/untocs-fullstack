@@ -62,97 +62,85 @@ const COUNTRY_CODES = [
 const products = [
   {
     id: 1,
-    name: 'Onesies',
-    description: 'Soft, breathable onesies in natural colors',
-    image: 'https://images.pexels.com/photos/5982301/pexels-photo-5982301.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Onesie',
+    category: 'Clothing',
+    image: '/assets/onsie.jpeg'
   },
   {
     id: 2,
-    name: 'Rompers',
-    description: 'Comfortable rompers for all-day play',
-    image: 'https://images.pexels.com/photos/36709406/pexels-photo-36709406.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Bodysuit',
+    category: 'Clothing',
+    image: '/assets/Bodysuit.jpeg'
   },
   {
     id: 3,
-    name: 'Jhablas',
-    description: 'Traditional jhablas with modern comfort',
-    image: 'https://images.pexels.com/photos/15961868/pexels-photo-15961868.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Romper',
+    category: 'Clothing',
+    image: '/assets/romper.jpeg'
   },
   {
     id: 4,
-    name: 'Swaddles',
-    description: 'Gentle swaddles for peaceful sleep',
-    image: 'https://images.unsplash.com/photo-1655728664483-1e3b0778e1a5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwxfHxjb3R0b24lMjBiYWJ5JTIwZmFicmljfGVufDB8fHx8MTc3NTAzNTYxMHww&ixlib=rb-4.1.0&q=85'
+    name: 'Wrap Top',
+    category: 'Clothing',
+    image: '/assets/wrap top.jpeg'
   },
   {
     id: 5,
-    name: 'Sleepwear',
-    description: 'Cozy sleepwear for restful nights',
-    image: 'https://images.pexels.com/photos/6849333/pexels-photo-6849333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Tank Top',
+    category: 'Clothing',
+    image: '/assets/tank top.jpeg'
   },
   {
     id: 6,
     name: 'Pants',
-    description: 'Stretchy, comfortable pants for active babies',
-    image: 'https://images.pexels.com/photos/30435354/pexels-photo-30435354.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    category: 'Clothing',
+    image: '/assets/pants.jpeg'
   },
   {
     id: 7,
-    name: 'Tank Tops',
-    description: 'Lightweight tank tops for warm days',
-    image: 'https://images.unsplash.com/photo-1580835619786-7f0747475dc7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwyfHxiYWJ5JTIwb25lc2llfGVufDB8fHx3aGl0ZXwxNzc1MDM4OTM5fDA&ixlib=rb-4.1.0&q=85'
+    name: 'Mittens',
+    category: 'Accessories',
+    image: '/assets/mittens.jpeg'
   },
   {
     id: 8,
-    name: 'Mittens',
-    description: 'Soft mittens to protect delicate hands',
-    image: 'https://images.pexels.com/photos/29234754/pexels-photo-29234754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Socks',
+    category: 'Accessories',
+    image: '/assets/socks.jpeg'
   },
   {
     id: 9,
-    name: 'Caps',
-    description: 'Gentle caps for warmth and comfort',
-    image: 'https://images.pexels.com/photos/16053828/pexels-photo-16053828.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Booties',
+    category: 'Accessories',
+    image: '/assets/booties.jpeg'
   },
   {
     id: 10,
-    name: 'Socks',
-    description: 'Non-slip socks for tiny feet',
-    image: 'https://images.unsplash.com/photo-1591909242139-83cc3b9217c1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwzfHxiYWJ5JTIwc2xlZXB3ZWFyfGVufDB8fHx3aGl0ZXwxNzc1MDM4OTU3fDA&ixlib=rb-4.1.0&q=85'
+    name: 'Bib',
+    category: 'Accessories',
+    image: '/assets/bib.jpeg'
   },
   {
     id: 11,
-    name: 'Toys',
-    description: 'Chemical-free soft toys safe for curious hands and mouths',
-    image: 'https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Hooded Towel',
+    category: 'Care',
+    image: '/assets/towel.jpeg'
   },
   {
     id: 12,
-    name: 'Bed Sheets',
-    description: 'Toxin-free sheets for safe, restful sleep',
-    image: 'https://images.pexels.com/photos/6685231/pexels-photo-6685231.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-  },
-  {
-    id: 13,
-    name: 'Curtains',
-    description: 'Natural fabric curtains free from chemical flame retardants',
-    image: 'https://images.pexels.com/photos/1248583/pexels-photo-1248583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-  },
-  {
-    id: 14,
-    name: 'Pillow Covers',
-    description: 'Soft, breathable pillow covers for delicate skin',
-    image: 'https://images.pexels.com/photos/6316065/pexels-photo-6316065.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-  },
-  {
-    id: 15,
-    name: 'Diapers & Wipes',
-    description: 'Plant-based diapers and wipes with zero harmful chemicals',
-    image: 'https://images.pexels.com/photos/3662667/pexels-photo-3662667.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+    name: 'Detergent',
+    category: 'Care',
+    image: '/assets/detergent.jpeg'
   }
 ];
 
-const Home = () => {
+const CATEGORIES = ['All', 'Clothing', 'Accessories', 'Care'];
+
+const Untocs = () => {
+  React.useEffect(() => {
+    document.title = 'Toxin free baby clothing';
+  }, []);
+
   const [formData, setFormData] = useState({
     firstName: '',
     email: '',
@@ -166,6 +154,7 @@ const Home = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phoneError, setPhoneError] = useState('');
+  const [activeCategory, setActiveCategory] = useState('All');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -315,22 +304,20 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-headline">
-              Cloths are treated and dyed with toxic chemicals. Your baby wears it 16 hours a day.
+              Clothes are treated and dyed with toxic chemicals. Your baby wears them all day.
             </h1>
-           <p className="hero-subline">
-            Over 8,000 synthetic chemicals are used in textile manufacturing including synthetic dyes, formaldehyde finishes, and chemical softeners.
-            </p>
             <p className="hero-subline">
-              Many cause immediate reactions like eczema, allergies, and textile dermatitis. Others are known carcinogens and endocrine disruptors, linked to long-term reproductive and developmental harm. Your baby's skin absorbs more of this than you'd expect.
-              </p>
+Over 8,000 synthetic chemicals are used in textile manufacturing. Many are known allergens, carcinogens, and endocrine disruptors. Your baby’s skin absorbs these toxins more deeply than you’d expect.              </p>
+           <p className="hero-subline">
+<strong style={{fontWeight: 900}}>untocs</strong> is the toxin-free choice. We use only organic cotton, plant-based dyes, and skin-safe alternatives to standard textile chemicals. Zero compromise.   </p>
           
             <Button onClick={scrollToWaitlist} size="lg" className="hero-cta">
               Join the Waitlist
             </Button>
           </div>
           <div className="hero-image">
-            <img 
-              src="https://images.pexels.com/photos/35727373/pexels-photo-35727373.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+            <img
+              src="/assets/hero image.jpeg"
               alt="Pure organic baby clothing"
             />
           </div>
@@ -458,22 +445,57 @@ const Home = () => {
       <section className="products-section">
         <div className="products-header">
           <h2>Our Collection</h2>
-          <p>Pure, chemical-free clothing for every moment of your baby's day</p>
+          <p>Pure, chemical-free products for every moment of your baby's day</p>
         </div>
 
-        <div className="products-grid">
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <div className="product-image-wrapper">
-                <img src={product.image} alt={product.name} className="product-image" />
-              </div>
-              <div className="product-info">
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-              </div>
-            </div>
+        <div className="category-tabs">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              className={`category-tab${activeCategory === cat ? ' active' : ''}`}
+              onClick={() => setActiveCategory(cat)}
+            >
+              {cat}
+            </button>
           ))}
         </div>
+
+        {activeCategory === 'All' ? (
+          CATEGORIES.filter(c => c !== 'All').map((cat) => {
+            const catProducts = products.filter(p => p.category === cat);
+            if (!catProducts.length) return null;
+            return (
+              <div key={cat} className="category-group">
+                <h3 className="category-group-title">{cat}</h3>
+                <div className="products-grid">
+                  {catProducts.map((product) => (
+                    <div key={product.id} className="product-card">
+                      <div className="product-image-wrapper">
+                        <img src={product.image} alt={product.name} className="product-image" />
+                      </div>
+                      <div className="product-info">
+                        <h3>{product.name}</h3>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <div className="products-grid">
+            {products.filter(p => p.category === activeCategory).map((product) => (
+              <div key={product.id} className="product-card">
+                <div className="product-image-wrapper">
+                  <img src={product.image} alt={product.name} className="product-image" />
+                </div>
+                <div className="product-info">
+                  <h3>{product.name}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Waitlist Form Section */}
@@ -637,4 +659,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Untocs;

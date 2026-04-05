@@ -1,0 +1,232 @@
+/* Cardamoon-specific styles — extends landing.css */
+
+/* 3-column solution cards override */
+.solution-cards-4 {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .solution-cards-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .solution-cards-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Why This Exists Section */
+.why-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.why-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.why-header h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.015em;
+}
+
+.why-paragraphs {
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.why-paragraphs p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+.pull-quote {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  padding: 1.5rem 2rem;
+  border-left: 4px solid #6e9a72;
+  background: #f0f7f1;
+  border-radius: 0 12px 12px 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #2a2a2a;
+  line-height: 1.6;
+}
+
+/* Stat Cards */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.09);
+}
+
+.stat-number {
+  font-family: 'Nunito', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.stat-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #6a6a6a;
+  font-weight: 500;
+}
+
+/* Dye Grid */
+.dye-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 3rem auto 0;
+}
+
+.dye-tile {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.dye-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.09);
+}
+
+.dye-swatch {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.dye-name {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 0.375rem;
+  letter-spacing: -0.01em;
+}
+
+.dye-description {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  font-weight: 500;
+  margin-bottom: 0.375rem;
+}
+
+.dye-botanical {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #8a8a8a;
+  font-weight: 500;
+}
+
+/* Product color swatch placeholder */
+.product-color-swatch {
+  width: 100%;
+  height: 200px;
+}
+
+/* Hero placeholder image */
+.hero-image-placeholder {
+  width: 100%;
+  height: 480px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cardamoon text logo */
+.cardamoon-logo-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 3.25rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.015em;
+  text-transform: lowercase;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .why-header h2 {
+    font-size: 2.25rem;
+  }
+
+  .stat-cards {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .dye-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .pull-quote {
+    font-size: 1.05rem;
+  }
+
+  .hero-image-placeholder {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-header h2 {
+    font-size: 1.875rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+}
