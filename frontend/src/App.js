@@ -1,19 +1,15 @@
 import "@/App.css";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Untocs from "./pages/Untocs";
-import Cardamoon from "./pages/Cardamoon";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LittleSage from "./pages/LittleSage";
 import { Toaster } from "./components/ui/sonner";
-import "./styles/landing.css";
-import "./styles/cardamoon.css";
+import "./styles/little-sage-page.css";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/untocs" replace />} />
-          <Route path="/untocs" element={<Untocs />} />
-          <Route path="/cardamoon" element={<Cardamoon />} />
+          <Route path="/" element={<LittleSage />} />
         </Routes>
       </BrowserRouter>
       <Toaster position="top-center" richColors />

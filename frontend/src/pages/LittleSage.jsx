@@ -10,13 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../components/ui/select';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '../components/ui/accordion';
-import { Leaf, Shield, Droplet, Heart, MapPin } from 'lucide-react';
+import { Shield, Droplet, Heart, MapPin } from 'lucide-react';
 import { toast } from 'sonner';
 import { submitWaitlistForm } from '../services/mockData';
 
@@ -60,85 +54,26 @@ const COUNTRY_CODES = [
 ];
 
 const products = [
-  {
-    id: 1,
-    name: 'Onesie',
-    category: 'Clothing',
-    image: '/assets/onsie.jpeg'
-  },
-  {
-    id: 2,
-    name: 'Bodysuit',
-    category: 'Clothing',
-    image: '/assets/Bodysuit.jpeg'
-  },
-  {
-    id: 3,
-    name: 'Romper',
-    category: 'Clothing',
-    image: '/assets/romper.jpeg'
-  },
-  {
-    id: 4,
-    name: 'Wrap Top',
-    category: 'Clothing',
-    image: '/assets/wrap top.jpeg'
-  },
-  {
-    id: 5,
-    name: 'Tank Top',
-    category: 'Clothing',
-    image: '/assets/tank top.jpeg'
-  },
-  {
-    id: 6,
-    name: 'Pants',
-    category: 'Clothing',
-    image: '/assets/pants.jpeg'
-  },
-  {
-    id: 7,
-    name: 'Mittens',
-    category: 'Accessories',
-    image: '/assets/mittens.jpeg'
-  },
-  {
-    id: 8,
-    name: 'Socks',
-    category: 'Accessories',
-    image: '/assets/socks.jpeg'
-  },
-  {
-    id: 9,
-    name: 'Booties',
-    category: 'Accessories',
-    image: '/assets/booties.jpeg'
-  },
-  {
-    id: 10,
-    name: 'Bib',
-    category: 'Accessories',
-    image: '/assets/bib.jpeg'
-  },
-  {
-    id: 11,
-    name: 'Hooded Towel',
-    category: 'Care',
-    image: '/assets/towel.jpeg'
-  },
-  {
-    id: 12,
-    name: 'Detergent',
-    category: 'Care',
-    image: '/assets/detergent.jpeg'
-  }
+  { id: 1, name: 'Onesie', category: 'Clothing', image: '/assets/onsie.jpeg' },
+  { id: 2, name: 'Bodysuit', category: 'Clothing', image: '/assets/Bodysuit.jpeg' },
+  { id: 3, name: 'Romper', category: 'Clothing', image: '/assets/romper.jpeg' },
+  { id: 4, name: 'Wrap Top', category: 'Clothing', image: '/assets/wrap top.jpeg' },
+  { id: 5, name: 'Tank Top', category: 'Clothing', image: '/assets/tank top.jpeg' },
+  { id: 6, name: 'Pants', category: 'Clothing', image: '/assets/pants.jpeg' },
+  { id: 7, name: 'Mittens', category: 'Accessories', image: '/assets/mittens.jpeg' },
+  { id: 8, name: 'Socks', category: 'Accessories', image: '/assets/socks.jpeg' },
+  { id: 9, name: 'Booties', category: 'Accessories', image: '/assets/booties.jpeg' },
+  { id: 10, name: 'Bib', category: 'Accessories', image: '/assets/bib.jpeg' },
+  { id: 11, name: 'Hooded Towel', category: 'Care', image: '/assets/towel.jpeg' },
+  { id: 12, name: 'Detergent', category: 'Care', image: '/assets/detergent.jpeg' },
 ];
 
 const CATEGORIES = ['All', 'Clothing', 'Accessories', 'Care'];
 
-const Untocs = () => {
+
+const LittleSage = () => {
   React.useEffect(() => {
-    document.title = 'Toxin free baby clothing';
+    document.title = 'Little Sage — Natural, Toxin-Free Baby Clothing';
   }, []);
 
   const [formData, setFormData] = useState({
@@ -159,8 +94,6 @@ const Untocs = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    
-    // Validate phone number if it's being changed
     if (name === 'phone') {
       validatePhoneNumber(value, formData.countryCode);
     }
@@ -171,31 +104,20 @@ const Untocs = () => {
       setPhoneError('');
       return true;
     }
-    
-    // Remove spaces and dashes
     const cleanPhone = phone.replace(/[\s-]/g, '');
-    
-    // Find the country configuration
     const countryConfig = COUNTRY_CODES.find(c => c.code === countryCode);
-    
     if (!countryConfig) {
       setPhoneError('Invalid country code selected');
       return false;
     }
-    
-    // Check if phone contains only digits
     if (!/^\d+$/.test(cleanPhone)) {
       setPhoneError('Phone number should contain only digits');
       return false;
     }
-    
-    // Check digit length
     if (cleanPhone.length !== countryConfig.digits) {
       setPhoneError(`Phone number must be ${countryConfig.digits} digits for ${countryConfig.country}`);
       return false;
     }
-    
-    // Special validation for India - must start with 6, 7, 8, or 9
     if (countryCode === '+91' && countryConfig.startsWithDigits) {
       const firstDigit = cleanPhone[0];
       if (!countryConfig.startsWithDigits.includes(firstDigit)) {
@@ -203,15 +125,12 @@ const Untocs = () => {
         return false;
       }
     }
-    
     setPhoneError('');
     return true;
   };
 
   const handleSelectChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    
-    // Re-validate phone if country code changes
     if (field === 'countryCode' && formData.phone) {
       validatePhoneNumber(formData.phone, value);
     }
@@ -219,55 +138,43 @@ const Untocs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validate required fields (email is now optional)
     if (!formData.firstName || !formData.babyAge || !formData.location || !formData.chemicalConcern) {
       toast.error('Please fill in all required fields');
       return;
     }
-
-    // Check if user wants to talk and phone is required
     if (formData.openToConversation === 'yes' && !formData.phone) {
       toast.error('Please enter your phone number so we can reach out to you');
       return;
     }
-
-    // Validate phone number if provided
     if (formData.phone && !validatePhoneNumber(formData.phone, formData.countryCode)) {
       toast.error('Please enter a valid phone number');
       return;
     }
 
     setIsSubmitting(true);
-    
     try {
-      // Combine country code and phone number for submission
       const submissionData = {
         ...formData,
         phone: formData.phone ? `${formData.countryCode}${formData.phone}` : ''
       };
-      
-      console.log('FormData before submission:', formData);
-      console.log('SubmissionData:', submissionData);
-      
-      const result = await submitWaitlistForm(submissionData);
+
+      const result = await submitWaitlistForm(submissionData, { source: 'little-sage' });
       if (result.success) {
-        // Show different success messages based on conversation preference
         if (formData.openToConversation === 'yes') {
-          toast.success("You're on the list and you're now part of our founding circle. We'll reach out personally within a few days to set up a quick conversation. As a thank you, you'll get exclusive first-access pricing when untocs launches.", {
+          toast.success("You're on the list and you're now part of our founding circle. We'll reach out personally within a few days to set up a quick conversation. As a thank you, you'll get exclusive first-access pricing when Little Sage launches.", {
             duration: 8000,
           });
         } else {
-          toast.success("You're on the list. We'll be in touch when untocs launches.", {
+          toast.success("You're on the list. We'll be in touch when Little Sage launches.", {
             duration: 5000,
           });
         }
-        setFormData({ 
-          firstName: '', 
-          email: '', 
+        setFormData({
+          firstName: '',
+          email: '',
           phone: '',
-          babyAge: '', 
-          location: '', 
+          babyAge: '',
+          location: '',
           chemicalConcern: '',
           firstImpression: '',
           openToConversation: ''
@@ -286,12 +193,12 @@ const Untocs = () => {
   };
 
   return (
-    <div className="landing-page">
+    <div className="little-sage-page">
       {/* Navigation */}
       <nav className="nav-container">
         <div className="nav-content">
           <div className="logo">
-            <img src="/untocs-transparent.png" alt="untocs" className="logo-image" />
+            <img src="/little-sage-logo.png" alt="Little Sage" className="logo-image" />
           </div>
           <Button onClick={scrollToWaitlist} className="nav-cta">
             Join the Waitlist
@@ -304,13 +211,11 @@ const Untocs = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-headline">
-              Clothes are treated and dyed with toxic chemicals. Your baby wears them all day.
+              Natural and Herbal dyed, toxin-free.
             </h1>
             <p className="hero-subline">
-Over 8,000 synthetic chemicals are used in textile manufacturing. Many are known allergens, carcinogens, and endocrine disruptors. Your baby’s skin absorbs these toxins more deeply than you’d expect.              </p>
-           <p className="hero-subline">
-<strong style={{fontWeight: 900}}>untocs</strong> is the toxin-free choice. We use only organic cotton, plant-based dyes, and skin-safe alternatives to standard textile chemicals. Zero compromise.   </p>
-          
+              A transparent promise of purity with nothing hidden and nothing harmful, starting with your baby’s first layers and expanding into every corner of the world they grow up in.
+            </p>
             <Button onClick={scrollToWaitlist} size="lg" className="hero-cta">
               Join the Waitlist
             </Button>
@@ -327,118 +232,116 @@ Over 8,000 synthetic chemicals are used in textile manufacturing. Many are known
       {/* Ticker Strip */}
       <div className="ticker-strip">
         <div className="ticker-content">
-          <span>No toxic dyes</span>
+          <span>No synthetic dyes</span>
           <span className="ticker-dot">·</span>
-          <span>No formaldehyde finishes</span>
+          <span>No toxic treatments</span>
           <span className="ticker-dot">·</span>
-          <span>No optical brighteners</span>
+          <span>Nothing hidden</span>
+          <span className="ticker-dot">·</span>
+          <span>Dyed with herbs and plants</span>
           <span className="ticker-dot">·</span>
           <span>No heavy metals</span>
           <span className="ticker-dot">·</span>
           <span>No PFAS</span>
           <span className="ticker-dot">·</span>
+          <span>No synthetic dyes</span>
+          <span className="ticker-dot">·</span>
+          <span>No toxic treatments</span>
+          <span className="ticker-dot">·</span>
           <span>Nothing hidden</span>
           <span className="ticker-dot">·</span>
-          <span>No toxic dyes</span>
-          <span className="ticker-dot">·</span>
-          <span>No formaldehyde finishes</span>
-          <span className="ticker-dot">·</span>
-          <span>No optical brighteners</span>
+          <span>Dyed with herbs and plants</span>
           <span className="ticker-dot">·</span>
           <span>No heavy metals</span>
           <span className="ticker-dot">·</span>
           <span>No PFAS</span>
-          <span className="ticker-dot">·</span>
-          <span>Nothing hidden</span>
         </div>
       </div>
+
+      {/* Why This Exists Section */}
+      <section className="why-section">
+        <div className="why-header">
+          <h2>The textile industry made a choice. We made a different one.</h2>
+        </div>
+        <div className="why-paragraphs">
+          <p>
+            When textile production scaled up, natural dyes were replaced with synthetic chemical dyes — cheaper, faster, easier to standardize. The industry chose efficiency. Nobody asked what those chemicals do to the people wearing the clothes.
+          </p>
+          <p>
+            Many synthetic dyes and textile finishing chemicals are endocrine disruptors and carcinogens. They silently leach into skin in small quantities. Your baby wears this for 24 hours a day.
+          </p>
+        </div>
+        <blockquote className="pull-quote">
+          Plant-based dyes exist. They work. The industry just stopped using them. We chose to use them instead.
+        </blockquote>
+        <div className="stat-cards">
+          <div className="stat-card">
+            <div className="stat-number">8,000+</div>
+            <div className="stat-label">chemicals used in global textile production</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">24 hrs</div>
+            <div className="stat-label">daily skin contact for babies</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">0</div>
+            <div className="stat-label">toxic treatments in Little Sage clothing</div>
+          </div>
+        </div>
+      </section>
 
       {/* Solution Section */}
       <section className="solution-section">
         <div className="solution-header">
           <h2>We do things differently</h2>
-          <p className="solution-subline">
-            untocs starts where other brands stop. We control every step — the fibre, the dye, the finish. 
-            No synthetic chemicals enter our process at any stage. What you get is clothing that is pure from 
-            the first thread to the last stitch.
-          </p>
         </div>
 
-        <div className="solution-cards">
-          {/* Card 1 */}
+        <div className="solution-cards solution-cards-4">
           <div className="solution-card">
             <div className="card-icon">
               <Shield size={32} />
             </div>
-            <h3>Zero toxic chemicals</h3>
+            <h3>Zero toxic substances</h3>
             <p>
-              Most baby clothing is treated with synthetic dyes, formaldehyde finishes, and optical brighteners. 
-              Brands aren't required to disclose this. untocs is built around what we leave out — from raw material 
-              to final stitch. Every untocs garment carries zero toxic chemical treatments. Ever.
+              No synthetic dyes, no chemical softeners, no formaldehyde finishes. Nothing that has no business being near a baby's skin. Every Little Sage garment is free of toxic treatments from the first thread to the last stitch.
             </p>
-            <div className="card-image">
-              <img 
-                src="https://images.pexels.com/photos/4964277/pexels-photo-4964277.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
-                alt="Chemical-free baby clothing"
-              />
-            </div>
           </div>
 
-          {/* Card 2 */}
           <div className="solution-card">
             <div className="card-icon">
               <Heart size={32} />
             </div>
-            <h3>Built for the most sensitive skin</h3>
+            <h3>Built for sensitive skin</h3>
             <p>
-              Infant skin is 30% thinner than adult skin. It doesn't block what touches it — it absorbs it. 
-              Your baby is in direct skin contact with clothing all day and through the night. Every untocs 
-              decision starts from that fact.
+              Infant skin is 30% thinner than adult skin. It doesn't block what touches it — it absorbs it. Your baby is in direct skin contact with clothing all day and through the night. Every Little Sage decision starts from that fact.
             </p>
-            <div className="card-image">
-              <img 
-                src="https://images.unsplash.com/photo-1655728664483-1e3b0778e1a5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwxfHxjb3R0b24lMjBiYWJ5JTIwZmFicmljfGVufDB8fHx8MTc3NTAzNTYxMHww&ixlib=rb-4.1.0&q=85" 
-                alt="Soft pure cotton fabric"
-              />
-            </div>
           </div>
 
-          {/* Card 3 */}
           <div className="solution-card">
             <div className="card-icon">
               <Droplet size={32} />
             </div>
             <h3>How we dye our clothes</h3>
             <p>
-              Most brands use synthetic azo dyes loaded with heavy metals and carcinogens. We don't. 
-              Every untocs garment is coloured using plant-based botanicals rooted in India's textile tradition — 
-              each chosen because it carries zero toxic risk against your baby's skin:
+              Every Little Sage garment is coloured using plant-based botanicals — each chosen because it carries zero toxic risk against your baby's skin:
             </p>
             <div className="botanical-list">
               <div className="botanical-item">
                 <strong>Turmeric</strong> — anti-inflammatory, calms sensitive skin
               </div>
               <div className="botanical-item">
-                <strong>Neem</strong> — antimicrobial, natural fabric protection
-              </div>
-              <div className="botanical-item">
                 <strong>Indigo</strong> — cooling, reduces heat and irritation
               </div>
               <div className="botanical-item">
-                <strong>Tulsi</strong> — enhances textile hygiene naturally
+                <strong>Madder</strong> — natural terracotta, zero synthetic processing
               </div>
               <div className="botanical-item">
-                <strong>Pomegranate</strong> — natural UV resistance
+                <strong>Henna</strong> — antimicrobial, gentle on delicate skin
               </div>
-            </div>
-            <div className="card-image">
-              <img 
-                src="https://images.pexels.com/photos/6850873/pexels-photo-6850873.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
-                alt="Natural botanical dyes"
-              />
             </div>
           </div>
         </div>
+
       </section>
 
       {/* Products Section */}
@@ -503,7 +406,7 @@ Over 8,000 synthetic chemicals are used in textile manufacturing. Many are known
         <div className="waitlist-container">
           <div className="waitlist-header">
             <h2>Be the first to know</h2>
-            <p>We're launching soon. Join the waitlist and we'll be in touch when untocs is ready.</p>
+            <p>We're launching soon. Join the waitlist and we'll be in touch when Little Sage is ready.</p>
             <div className="india-notice">
               <MapPin size={18} />
               <span>Launching soon in India</span>
@@ -610,7 +513,7 @@ Over 8,000 synthetic chemicals are used in textile manufacturing. Many are known
             </div>
 
             <div className="form-group">
-              <Label htmlFor="firstImpression">What's your first impression of untocs?</Label>
+              <Label htmlFor="firstImpression">What's your first impression of Little Sage?</Label>
               <Textarea
                 id="firstImpression"
                 name="firstImpression"
@@ -650,13 +553,13 @@ Over 8,000 synthetic chemicals are used in textile manufacturing. Many are known
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-logo">
-            <img src="/untocs-transparent.png" alt="untocs" className="logo-image" />
+            <img src="/little-sage-logo.png" alt="Little Sage" className="footer-logo-image" />
           </div>
-          <p className="footer-text">No spam. Just updates when we launch.</p>
+          <p className="footer-text">No spam. Just a note when we're ready.</p>
         </div>
       </footer>
     </div>
   );
 };
 
-export default Untocs;
+export default LittleSage;

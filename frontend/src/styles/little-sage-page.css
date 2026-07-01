@@ -1,0 +1,758 @@
+/* ============================================
+   LITTLE SAGE PAGE — fully scoped styles
+   All rules live under .little-sage-page
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+
+.little-sage-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* Navigation */
+.little-sage-page .nav-container {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.little-sage-page .nav-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.little-sage-page .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2A3D2C;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.little-sage-page .logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.little-sage-page .nav-cta {
+  background-color: #2A3D2C;
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.little-sage-page .nav-cta:hover {
+  background-color: #00911D;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 145, 29, 0.3);
+}
+
+/* Hero */
+.little-sage-page .hero-section {
+  padding: 10rem 2rem 5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.little-sage-page .hero-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.little-sage-page .hero-text {
+  animation: cm-fadeInUp 0.8s ease-out;
+}
+
+.little-sage-page .hero-headline {
+  font-family: 'Nunito', sans-serif;
+  font-size: 3.25rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #2A3D2C;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.015em;
+}
+
+.little-sage-page .hero-subline {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+}
+
+.little-sage-page .hero-cta {
+  background-color: #00911D;
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 145, 29, 0.25);
+}
+
+.little-sage-page .hero-cta:hover {
+  background-color: #00711A;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 145, 29, 0.35);
+}
+
+.little-sage-page .hero-image {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  animation: cm-fadeIn 1s ease-out 0.3s both;
+}
+
+.little-sage-page .hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.little-sage-page .hero-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Ticker */
+.little-sage-page .ticker-strip {
+  background: #EAF7EC;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  padding: 1.25rem 0;
+  margin: 4rem 0;
+}
+
+.little-sage-page .ticker-content {
+  display: flex;
+  gap: 2rem;
+  animation: cm-ticker 25s linear infinite;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2A3D2C;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.little-sage-page .ticker-dot {
+  color: #00911D;
+  font-size: 1.2rem;
+}
+
+/* Why Section */
+.little-sage-page .why-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.little-sage-page .why-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.little-sage-page .why-header h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #2A3D2C;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.015em;
+}
+
+.little-sage-page .why-paragraphs {
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.little-sage-page .why-paragraphs p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+.little-sage-page .pull-quote {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  padding: 1.5rem 2rem;
+  border-left: 4px solid #00911D;
+  background: #EAF7EC;
+  border-radius: 0 12px 12px 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #2A3D2C;
+  line-height: 1.6;
+}
+
+/* Stat Cards */
+.little-sage-page .stat-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.little-sage-page .stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.little-sage-page .stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.09);
+}
+
+.little-sage-page .stat-number {
+  font-family: 'Nunito', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #2A3D2C;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.little-sage-page .stat-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #6a6a6a;
+  font-weight: 500;
+}
+
+/* Solution Section */
+.little-sage-page .solution-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.little-sage-page .solution-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.little-sage-page .solution-header h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #2A3D2C;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.015em;
+}
+
+.little-sage-page .solution-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.little-sage-page .solution-cards-4 {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.little-sage-page .solution-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.little-sage-page .solution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.09);
+}
+
+.little-sage-page .card-icon {
+  width: 56px;
+  height: 56px;
+  background: #E6F7E9;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00911D;
+  margin-bottom: 1.5rem;
+}
+
+.little-sage-page .solution-card h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2A3D2C;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.little-sage-page .solution-card p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.little-sage-page .botanical-list {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.little-sage-page .botanical-item {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  padding-left: 1.25rem;
+  position: relative;
+  font-weight: 500;
+}
+
+.little-sage-page .botanical-item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #00911D;
+  font-size: 1.2rem;
+}
+
+.little-sage-page .botanical-item strong {
+  color: #2A3D2C;
+  font-weight: 700;
+}
+
+/* Products Section */
+.little-sage-page .products-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.little-sage-page .products-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.little-sage-page .products-header h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #2A3D2C;
+  margin-bottom: 1rem;
+  letter-spacing: -0.015em;
+}
+
+.little-sage-page .products-header p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+.little-sage-page .category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.little-sage-page .category-tab {
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  border: 1.5px solid #cfd8cf;
+  background: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.little-sage-page .category-tab:hover {
+  border-color: #00911D;
+  color: #00911D;
+}
+
+.little-sage-page .category-tab.active {
+  background: #00911D;
+  border-color: #00911D;
+  color: #fff;
+}
+
+.little-sage-page .category-group {
+  margin-top: 2.5rem;
+}
+
+.little-sage-page .category-group-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #00911D;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #cfe9d3;
+}
+
+.little-sage-page .products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+.little-sage-page .product-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+}
+
+.little-sage-page .product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.little-sage-page .product-image-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #F0F8F1;
+}
+
+.little-sage-page .product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.little-sage-page .product-card:hover .product-image {
+  transform: scale(1.07);
+}
+
+.little-sage-page .product-info {
+  padding: 0.875rem 1rem;
+}
+
+.little-sage-page .product-info h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2A3D2C;
+}
+
+/* India Notice */
+.little-sage-page .india-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #E6F7E9;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #00711A;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Form */
+.little-sage-page .form-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #d6ded6 50%, transparent 100%);
+  margin: 2rem 0 1.5rem;
+}
+
+.little-sage-page .phone-input-wrapper {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.little-sage-page .country-code-select { width: 100%; }
+.little-sage-page .phone-number-input { width: 100%; }
+.little-sage-page .country-code-dropdown { max-height: 300px; overflow-y: auto; }
+
+.little-sage-page .error-message {
+  display: block;
+  color: #dc2626;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.little-sage-page .conversation-label {
+  line-height: 1.6 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.little-sage-page .phone-reminder {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fef3c7;
+  border-left: 3px solid #f59e0b;
+  border-radius: 6px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #92400e;
+}
+
+/* Waitlist */
+.little-sage-page .waitlist-section {
+  background: #F0F8F1;
+  padding: 6rem 2rem;
+  margin: 5rem 0 0;
+}
+
+.little-sage-page .waitlist-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.little-sage-page .waitlist-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.little-sage-page .waitlist-header h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #2A3D2C;
+  margin-bottom: 1rem;
+  letter-spacing: -0.015em;
+}
+
+.little-sage-page .waitlist-header p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+.little-sage-page .waitlist-form {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.little-sage-page .form-group {
+  margin-bottom: 1.75rem;
+}
+
+.little-sage-page .form-group label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2A3D2C;
+  margin-bottom: 0.5rem;
+  display: block;
+  letter-spacing: 0.01em;
+}
+
+.little-sage-page .form-group input,
+.little-sage-page .form-group textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  border: 1.5px solid #d6ded6;
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+  transition: all 0.2s ease;
+  background: #fafcfa;
+  font-weight: 500;
+  width: 100%;
+}
+
+.little-sage-page .form-group input:focus,
+.little-sage-page .form-group textarea:focus {
+  border-color: #00911D;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 145, 29, 0.12);
+  outline: none;
+}
+
+.little-sage-page .form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.little-sage-page .submit-button {
+  width: 100%;
+  background-color: #00911D;
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 1.125rem 2rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 145, 29, 0.25);
+}
+
+.little-sage-page .submit-button:hover:not(:disabled) {
+  background-color: #00711A;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 145, 29, 0.35);
+}
+
+.little-sage-page .submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.little-sage-page .footer {
+  background: #F0F8F1;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 3rem 2rem;
+}
+
+.little-sage-page .footer-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.little-sage-page .footer-logo {
+  display: flex;
+  align-items: center;
+}
+
+.little-sage-page .footer-logo-image {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+
+.little-sage-page .footer-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  color: #6a6a6a;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes cm-fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cm-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cm-ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .little-sage-page .hero-content { grid-template-columns: 1fr; gap: 3rem; }
+  .little-sage-page .hero-headline { font-size: 2.75rem; }
+  .little-sage-page .solution-cards { grid-template-columns: 1fr; }
+  .little-sage-page .solution-cards-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .little-sage-page .nav-content { padding: 1rem 1.5rem; }
+  .little-sage-page .hero-section { padding: 8rem 1.5rem 4rem; }
+  .little-sage-page .hero-headline { font-size: 2.25rem; }
+  .little-sage-page .why-header h2 { font-size: 2.25rem; }
+  .little-sage-page .stat-cards { grid-template-columns: 1fr; max-width: 400px; }
+  .little-sage-page .solution-header h2 { font-size: 2.25rem; }
+  .little-sage-page .solution-card { padding: 2rem; }
+  .little-sage-page .products-header h2 { font-size: 2.25rem; }
+  .little-sage-page .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+  .little-sage-page .product-image-wrapper { height: 160px; }
+  .little-sage-page .waitlist-header h2 { font-size: 2.25rem; }
+  .little-sage-page .waitlist-form { padding: 2rem; }
+  .little-sage-page .phone-input-wrapper { grid-template-columns: 1fr; }
+  .little-sage-page .pull-quote { font-size: 1.05rem; }
+}
+
+@media (max-width: 640px) {
+  .little-sage-page .solution-cards-4 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .little-sage-page .hero-headline { font-size: 1.875rem; }
+  .little-sage-page .solution-header h2,
+  .little-sage-page .waitlist-header h2 { font-size: 1.875rem; }
+  .little-sage-page .nav-cta { font-size: 0.85rem; padding: 0.5rem 1.25rem; }
+  .little-sage-page .stat-number { font-size: 2.5rem; }
+  .little-sage-page .why-header h2 { font-size: 1.875rem; }
+}
