@@ -220,6 +220,162 @@
   line-height: 1.6;
 }
 
+/* Pathway (absorption flow) */
+.little-sage-page .pathway {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+  padding: 2rem 1.5rem;
+  background: #FBF7F2;
+  border-radius: 16px;
+}
+
+.little-sage-page .pathway-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 180px;
+}
+
+.little-sage-page .pathway-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #E7A24C;
+  color: #C1731E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.little-sage-page .pathway-label strong {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #2A3D2C;
+  margin-bottom: 0.25rem;
+}
+
+.little-sage-page .pathway-label span {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #6a6a6a;
+  font-weight: 500;
+}
+
+.little-sage-page .pathway-arrow {
+  color: #d8b98c;
+  flex-shrink: 0;
+  margin-top: 12px;
+}
+
+/* Compare Split */
+.little-sage-page .compare-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.little-sage-page .compare-col {
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.little-sage-page .compare-col-bad {
+  background: #FBF1EF;
+}
+
+.little-sage-page .compare-col-good {
+  background: #EAF7EC;
+}
+
+.little-sage-page .compare-col-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.little-sage-page .compare-col-bad .compare-col-title { color: #B54A34; }
+.little-sage-page .compare-col-good .compare-col-title { color: #00711A; }
+
+.little-sage-page .compare-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+.little-sage-page .compare-item strong {
+  color: #2A3D2C;
+  font-weight: 700;
+}
+
+.little-sage-page .compare-col-bad .compare-item svg {
+  color: #C1573D;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.little-sage-page .compare-col-good .compare-item svg {
+  color: #00911D;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.little-sage-page .compare-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: #FFF6E5;
+  border: 1.5px solid #F0C46B;
+  border-radius: 12px;
+}
+
+.little-sage-page .compare-note-icon {
+  color: #C1791E;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.little-sage-page .compare-note p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #6a4f1a;
+  font-weight: 500;
+  margin: 0;
+}
+
+.little-sage-page .compare-note strong {
+  color: #8a5a00;
+  font-weight: 800;
+}
+
 /* Stat Cards */
 .little-sage-page .stat-cards {
   display: grid;
@@ -292,7 +448,7 @@
 }
 
 .little-sage-page .solution-cards-4 {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 
@@ -733,6 +889,9 @@
   .little-sage-page .hero-headline { font-size: 2.25rem; }
   .little-sage-page .why-header h2 { font-size: 2.25rem; }
   .little-sage-page .stat-cards { grid-template-columns: 1fr; max-width: 400px; }
+  .little-sage-page .pathway { flex-direction: column; align-items: center; }
+  .little-sage-page .pathway-arrow { transform: rotate(90deg); margin-top: 0; }
+  .little-sage-page .compare-split { grid-template-columns: 1fr; }
   .little-sage-page .solution-header h2 { font-size: 2.25rem; }
   .little-sage-page .solution-card { padding: 2rem; }
   .little-sage-page .products-header h2 { font-size: 2.25rem; }

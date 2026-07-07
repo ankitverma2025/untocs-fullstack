@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../components/ui/select';
-import { Shield, Droplet, Heart, MapPin } from 'lucide-react';
+import { Shield, Droplet, Heart, MapPin, Shirt, ArrowRight, Activity, Check, X, AlertTriangle } from 'lucide-react';
 import { toast } from 'sonner';
 import { submitWaitlistForm } from '../services/mockData';
 
@@ -267,10 +267,90 @@ const LittleSage = () => {
           <p>
             When textile production scaled up, natural dyes were replaced with synthetic chemical dyes — cheaper, faster, easier to standardize. The industry chose efficiency. Nobody asked what those chemicals do to the people wearing the clothes.
           </p>
+        </div>
+
+        <div className="pathway">
+          <div className="pathway-step">
+            <div className="pathway-icon"><Shirt size={22} /></div>
+            <div className="pathway-label"><strong>Fabric chemicals</strong><span>sit on standard baby cotton</span></div>
+          </div>
+          <ArrowRight className="pathway-arrow" size={20} />
+          <div className="pathway-step">
+            <div className="pathway-icon"><Droplet size={22} /></div>
+            <div className="pathway-label"><strong>Sweat dissolves them</strong><span>moisture pulls residue off fibers</span></div>
+          </div>
+          <ArrowRight className="pathway-arrow" size={20} />
+          <div className="pathway-step">
+            <div className="pathway-icon"><Heart size={22} /></div>
+            <div className="pathway-label"><strong>Soaks into skin</strong><span>30% thinner, absorbs 3x faster</span></div>
+          </div>
+          <ArrowRight className="pathway-arrow" size={20} />
+          <div className="pathway-step">
+            <div className="pathway-icon"><Activity size={22} /></div>
+            <div className="pathway-label"><strong>Straight to bloodstream</strong><span>no liver filtering, like ingestion</span></div>
+          </div>
+        </div>
+
+        <div className="compare-split">
+          <div className="compare-col compare-col-bad">
+            <div className="compare-col-title">Standard baby clothing</div>
+            <div className="compare-item">
+              <X size={18} />
+              <span><strong>Formaldehyde</strong> — wrinkle-resist resin finish, known carcinogen</span>
+            </div>
+            <div className="compare-item">
+              <X size={18} />
+              <span><strong>Phthalates &amp; PFAS</strong> — soften prints, stain-resistance, hormone disruptors</span>
+            </div>
+            <div className="compare-item">
+              <X size={18} />
+              <span><strong>Heavy metals</strong> — lead and chromium in pigments and colour-fixing</span>
+            </div>
+            <div className="compare-item">
+              <X size={18} />
+              <span><strong>Aromatic amines</strong> — released when azo dyes break down from warmth and sweat, known human carcinogens</span>
+            </div>
+            <div className="compare-item">
+              <X size={18} />
+              <span><strong>Bisphenols (BPA/BPS)</strong> — used to fix dye onto fabric, hormone disruptors that stay active in the bloodstream for over a week when absorbed through skin</span>
+            </div>
+            <div className="compare-item">
+              <X size={18} />
+              <span><strong>Hidden residues</strong> — lab tests have found traces of pesticides, preservatives (like methylparaben) and synthetic fragrances left over from processing</span>
+            </div>
+          </div>
+          <div className="compare-col compare-col-good">
+            <div className="compare-col-title">Little Sage</div>
+            <div className="compare-item">
+              <Check size={18} />
+              <span><strong>Zero synthetic dyes</strong> — only plant botanicals</span>
+            </div>
+            <div className="compare-item">
+              <Check size={18} />
+              <span><strong>Zero formaldehyde, phthalates, PFAS</strong> — nothing to leach out</span>
+            </div>
+            <div className="compare-item">
+              <Check size={18} />
+              <span><strong>Zero heavy metals</strong> — safe bio-mordants instead</span>
+            </div>
+            <div className="compare-item">
+              <Check size={18} />
+              <span><strong>Zero aromatic amines or bisphenols</strong> — no azo dyes, no synthetic fixing agents to break down or leach</span>
+            </div>
+            <div className="compare-item">
+              <Check size={18} />
+              <span><strong>Lab-tested finished garments</strong> — checked for hidden residues, not just a paper certificate</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="compare-note">
+          <AlertTriangle size={22} className="compare-note-icon" />
           <p>
-            Many synthetic dyes and textile finishing chemicals are endocrine disruptors and carcinogens. They silently leach into skin in small quantities. Your baby wears this for 24 hours a day.
+            <strong>A word of caution:</strong> some brands market synthetic dyes as "azo-free" or even "chemical-free." They aren't — it's still a synthetic petrochemical dye with its own fixing agents. Always check for real, plant-based dyes, not just a reassuring label.
           </p>
         </div>
+
         <blockquote className="pull-quote">
           Plant-based dyes exist. They work. The industry just stopped using them. We chose to use them instead.
         </blockquote>
@@ -280,8 +360,8 @@ const LittleSage = () => {
             <div className="stat-label">chemicals used in global textile production</div>
           </div>
           <div className="stat-card">
-            <div className="stat-number">24 hrs</div>
-            <div className="stat-label">daily skin contact for babies</div>
+            <div className="stat-number">30%</div>
+            <div className="stat-label">thinner skin in newborns vs. adults — absorbs more, faster</div>
           </div>
           <div className="stat-card">
             <div className="stat-number">0</div>
@@ -303,7 +383,7 @@ const LittleSage = () => {
             </div>
             <h3>Zero toxic substances</h3>
             <p>
-              No synthetic dyes, no chemical softeners, no formaldehyde finishes. Nothing that has no business being near a baby's skin. Every Little Sage garment is free of toxic treatments from the first thread to the last stitch.
+              No formaldehyde resin finishes, no phthalate or PFAS coatings, no lead- or chromium-based pigments, no synthetic dyes — not even "azo-free" ones, which are still petrochemicals. Every Little Sage garment is free of these treatments from the first thread to the last stitch, and we lab-test finished garments to confirm it — not just the paper trail.
             </p>
           </div>
 
@@ -313,7 +393,7 @@ const LittleSage = () => {
             </div>
             <h3>Built for sensitive skin</h3>
             <p>
-              Infant skin is 30% thinner than adult skin. It doesn't block what touches it — it absorbs it. Your baby is in direct skin contact with clothing all day and through the night. Every Little Sage decision starts from that fact.
+              Infant skin is 30% thinner than adult skin and absorbs substances roughly 3x faster, and sweat pulls chemical residues out of fabric even more efficiently than dry contact. Your baby is in direct skin contact with clothing all day and through the night, and often chews on it too. Every Little Sage decision starts from that fact.
             </p>
           </div>
 
@@ -323,7 +403,7 @@ const LittleSage = () => {
             </div>
             <h3>How we dye our clothes</h3>
             <p>
-              Every Little Sage garment is coloured using plant-based botanicals — each chosen because it carries zero toxic risk against your baby's skin:
+              Every Little Sage garment is coloured using plant-based botanicals, fixed to the fabric with safe bio-mordants — alum, lime juice, and pomegranate rind — instead of the toxic metal mordants some natural dyers still use. Each botanical is chosen for what it does for your baby's skin, not just its colour:
             </p>
             <div className="botanical-list">
               <div className="botanical-item">
@@ -333,10 +413,37 @@ const LittleSage = () => {
                 <strong>Indigo</strong> — cooling, reduces heat and irritation
               </div>
               <div className="botanical-item">
-                <strong>Madder</strong> — natural terracotta, zero synthetic processing
+                <strong>Madder</strong> — natural terracotta pink, zero synthetic processing
               </div>
               <div className="botanical-item">
                 <strong>Henna</strong> — antimicrobial, gentle on delicate skin
+              </div>
+              <div className="botanical-item">
+                <strong>Marigold</strong> — soothing yellow, traditionally used for wound care
+              </div>
+              <div className="botanical-item">
+                <strong>Pomegranate rind</strong> — tannin-rich, doubles as a natural preservative for the dye
+              </div>
+            </div>
+          </div>
+
+          <div className="solution-card">
+            <div className="card-icon">
+              <Heart size={32} />
+            </div>
+            <h3>Real benefits, not just fewer risks</h3>
+            <p>
+              Plant dyes aren't only about avoiding harm — they actively do more for your baby's skin than synthetic dyes ever could:
+            </p>
+            <div className="botanical-list">
+              <div className="botanical-item">
+                <strong>Naturally antimicrobial</strong> — most botanical dyes come from medicinal plants and inhibit the bacteria that cause body odour, so garments stay fresher for longer
+              </div>
+              <div className="botanical-item">
+                <strong>Hypoallergenic</strong> — no synthetic residues to trigger contact allergies, ideal for eczema-prone or reactive skin
+              </div>
+              <div className="botanical-item">
+                <strong>Softer, more breathable feel</strong> — helps babies stay comfortable and settle into deeper, better sleep
               </div>
             </div>
           </div>
@@ -372,7 +479,7 @@ const LittleSage = () => {
                 <h3 className="category-group-title">{cat}</h3>
                 <div className="products-grid">
                   {catProducts.map((product) => (
-                    <div key={product.id} className="product-card">
+                    <div key={product.id} className="product-card" onClick={scrollToWaitlist}>
                       <div className="product-image-wrapper">
                         <img src={product.image} alt={product.name} className="product-image" />
                       </div>
@@ -388,7 +495,7 @@ const LittleSage = () => {
         ) : (
           <div className="products-grid">
             {products.filter(p => p.category === activeCategory).map((product) => (
-              <div key={product.id} className="product-card">
+              <div key={product.id} className="product-card" onClick={scrollToWaitlist}>
                 <div className="product-image-wrapper">
                   <img src={product.image} alt={product.name} className="product-image" />
                 </div>
