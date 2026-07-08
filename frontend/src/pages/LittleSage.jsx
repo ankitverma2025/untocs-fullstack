@@ -291,9 +291,10 @@ const LittleSage = () => {
           </div>
         </div>
 
-        <div className="compare-split">
+        <div className="compare-split compare-split-3">
           <div className="compare-col compare-col-bad">
-            <div className="compare-col-title">Standard baby clothing</div>
+            <div className="compare-col-title">Standard synthetic dyes</div>
+            <div className="compare-col-risk">High chemical risk</div>
             <div className="compare-item">
               <X size={18} />
               <span><strong>Formaldehyde</strong> — wrinkle-resist resin finish, known carcinogen</span>
@@ -319,8 +320,35 @@ const LittleSage = () => {
               <span><strong>Hidden residues</strong> — lab tests have found traces of pesticides, preservatives (like methylparaben) and synthetic fragrances left over from processing</span>
             </div>
           </div>
+
+          <div className="compare-col compare-col-mid">
+            <div className="compare-col-title">"Azo-free" dyes</div>
+            <div className="compare-col-risk">Improved but not chemical-free</div>
+            <div className="compare-item">
+              <Check size={18} />
+              <span><strong>No banned aromatic amines</strong> — a genuine, meaningful safety fix over standard azo dyes</span>
+            </div>
+            <div className="compare-item">
+              <AlertTriangle size={18} />
+              <span><strong>Still a synthetic dye</strong> — petroleum-derived, not plant-based, despite "chemical-free" marketing</span>
+            </div>
+            <div className="compare-item">
+              <AlertTriangle size={18} />
+              <span><strong>Still needs auxiliary chemicals</strong> — synthetic fixing agents and processing aids to bind colour to fabric</span>
+            </div>
+            <div className="compare-item">
+              <AlertTriangle size={18} />
+              <span><strong>Can retain trace impurities</strong> — and some are still fixed with formaldehyde-based agents</span>
+            </div>
+            <div className="compare-col-note">
+              <AlertTriangle size={16} />
+              <span><strong>A word of caution:</strong> azo-free dyes are a real, meaningful safety improvement — they genuinely remove the carcinogenic aromatic amines. But they're often marketed as "chemical-free," which they aren't: they're still synthetic, petroleum-derived dyes that need their own fixing agents. For truly chemical-free, look for real plant-based dyes.</span>
+            </div>
+          </div>
+
           <div className="compare-col compare-col-good">
             <div className="compare-col-title">Little Sage</div>
+            <div className="compare-col-risk">Gold standard, plant-based</div>
             <div className="compare-item">
               <Check size={18} />
               <span><strong>Zero synthetic dyes</strong> — only plant botanicals</span>
@@ -342,13 +370,6 @@ const LittleSage = () => {
               <span><strong>Lab-tested finished garments</strong> — checked for hidden residues, not just a paper certificate</span>
             </div>
           </div>
-        </div>
-
-        <div className="compare-note">
-          <AlertTriangle size={22} className="compare-note-icon" />
-          <p>
-            <strong>A word of caution:</strong> some brands market synthetic dyes as "azo-free" or even "chemical-free." They aren't — it's still a synthetic petrochemical dye with its own fixing agents. Always check for real, plant-based dyes, not just a reassuring label.
-          </p>
         </div>
 
         <blockquote className="pull-quote">

@@ -290,6 +290,11 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
+.little-sage-page .compare-split-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1200px;
+}
+
 .little-sage-page .compare-col {
   padding: 2rem 2.25rem;
   display: flex;
@@ -301,6 +306,10 @@
   background: #FBF1EF;
 }
 
+.little-sage-page .compare-col-mid {
+  background: #FFF8EC;
+}
+
 .little-sage-page .compare-col-good {
   background: #EAF7EC;
 }
@@ -310,11 +319,25 @@
   font-size: 1.1rem;
   font-weight: 800;
   letter-spacing: 0.01em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
-.little-sage-page .compare-col-bad .compare-col-title { color: #B54A34; }
-.little-sage-page .compare-col-good .compare-col-title { color: #00711A; }
+.little-sage-page .compare-col-risk {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+  opacity: 0.75;
+}
+
+.little-sage-page .compare-col-bad .compare-col-title,
+.little-sage-page .compare-col-bad .compare-col-risk { color: #B54A34; }
+.little-sage-page .compare-col-mid .compare-col-title,
+.little-sage-page .compare-col-mid .compare-col-risk { color: #A6740E; }
+.little-sage-page .compare-col-good .compare-col-title,
+.little-sage-page .compare-col-good .compare-col-risk { color: #00711A; }
 
 .little-sage-page .compare-item {
   display: flex;
@@ -338,40 +361,41 @@
   margin-top: 2px;
 }
 
+.little-sage-page .compare-col-mid .compare-item svg {
+  color: #C1791E;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
 .little-sage-page .compare-col-good .compare-item svg {
   color: #00911D;
   flex-shrink: 0;
   margin-top: 2px;
 }
 
-.little-sage-page .compare-note {
+.little-sage-page .compare-col-note {
   display: flex;
   align-items: flex-start;
-  gap: 0.9rem;
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
-  padding: 1.25rem 1.5rem;
-  background: #FFF6E5;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+  padding: 0.9rem 1rem;
+  background: #FFF0CC;
   border: 1.5px solid #F0C46B;
-  border-radius: 12px;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #6a4f1a;
+  font-weight: 500;
 }
 
-.little-sage-page .compare-note-icon {
+.little-sage-page .compare-col-note svg {
   color: #C1791E;
   flex-shrink: 0;
   margin-top: 0.15rem;
 }
 
-.little-sage-page .compare-note p {
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #6a4f1a;
-  font-weight: 500;
-  margin: 0;
-}
-
-.little-sage-page .compare-note strong {
+.little-sage-page .compare-col-note strong {
   color: #8a5a00;
   font-weight: 800;
 }
@@ -891,7 +915,8 @@
   .little-sage-page .stat-cards { grid-template-columns: 1fr; max-width: 400px; }
   .little-sage-page .pathway { flex-direction: column; align-items: center; }
   .little-sage-page .pathway-arrow { transform: rotate(90deg); margin-top: 0; }
-  .little-sage-page .compare-split { grid-template-columns: 1fr; }
+  .little-sage-page .compare-split,
+  .little-sage-page .compare-split-3 { grid-template-columns: 1fr; }
   .little-sage-page .solution-header h2 { font-size: 2.25rem; }
   .little-sage-page .solution-card { padding: 2rem; }
   .little-sage-page .products-header h2 { font-size: 2.25rem; }
